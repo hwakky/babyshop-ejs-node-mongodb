@@ -72,21 +72,21 @@ const dataItem = [
 ];
 
 function seedDB(){
-    Comment.remove({}, (err) => {
+    Comment.remove({}, function(err){
         if(err){
             console.log(err);
         } else {
             console.log('Comment remove complete');
         }
-    })
-    Cart.remove({}, (err) => {
+    }),
+    Cart.remove({}, function(err){
         if(err){
             console.log(err);
         } else {
             console.log('Cart remove complete');
         }
-    })
-    Item.remove({}, (err) => {
+    }),
+    Item.remove({}, function(err){
         if(err){
             console.log(err);
         }
