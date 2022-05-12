@@ -1,0 +1,43 @@
+.white{
+    color:white;
+}
+body{
+    font-family: 'Fjalla One', sans-serif;
+    background: rgb(57,57,65);
+    background: linear-gradient(180deg, rgba(57,57,65,1) 0%, rgba(240,130,80,1) 47%, rgba(240,180,80,1) 81%);
+}
+.box{
+    text-align: center;
+    background: white;
+    margin:auto;
+    width: 400px;
+    border-radius: 25px;
+    padding: 20px;
+}
+.bg-nav{
+    background:#393941;
+    /* background: #272822; */
+}
+.logo{
+    margin: auto;
+    margin-top: 3rem;
+}
+.hidden{
+    display:none;
+}
+.button{
+    background: #F66C2E;
+    color: #393941;
+}
+/* body {
+  align-items: center;
+  background: #F66C2E;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+} */
+
+@media only screen and (max-width:1200px){
+    .img-login{
+        display:none;
+    }
+}

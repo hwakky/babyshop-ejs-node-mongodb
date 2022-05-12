@@ -1,0 +1,73 @@
+<%- include('partials/headerNavbarAdmin.ejs') %>
+<div class='container pt-3'>
+    <h1>Manage Promotion</h1>
+    <hr>
+    <div class="container pt-3">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <% let i=0; %>
+            <% while(i < promotion.length){ %>
+                <% if(i == 0){ %>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i %>" class="active" aria-current="true" aria-label="Slide <%= i %>"></button>
+                <% i++; %>
+                <% }else{ %>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i %>" aria-label="Slide <%= i %>"></button>
+                <% i++; %>
+                <% } %>
+            <% }; %>
+        </div>
+        <div class="carousel-inner">
+          <% let j=0; %>
+          <% while(j < promotion.length){ %>
+            <% promotion.forEach((promotion) => { %>
+              <% if(j == 0){ %>
+                  <div class="carousel-item active">
+                  <img src="<%= promotion.image %>" class="d-block w-100" style='height: 400px; object-fit: cover; border-radius: 20px;'>
+                  </div>
+              <% j++; %>
+              <% }else{ %>
+                  <div class="carousel-item">
+                  <img src="<%= promotion.image %>" class="d-block w-100" style="height: 400px; object-fit: cover; border-radius: 20px;">
+                  </div>
+              <% j++; %>
+              <% } %>
+            <% }); %>
+          <% }; %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <form action='/admin/promotion/add' method="post" enctype="multipart/form-data">
+        <div class="mb-3 mt-3">
+          <label class="form-label">Image</label>
+          <input type="file" class="form-control" name="image" accept="image/*" required>
+        </div>
+        <button type='submit' class='btn btn-primary'>Add new promotion</button>
+    </form>
+      <div class="album pb-5 mt-3">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3">
+            <% promotion.forEach((promotion) => { %>
+              <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <div class="card shadow-sm text-center justify-contents-center" style="border-radius: 20px;">
+                  <img src='<%= promotion.image %>' style="width:100%; height: 200px; border-radius: 20px;">
+                </div>
+                <div class='text-center mt-2'>
+                    <form onsubmit="if(!confirm('Are you sure?')){return false;}" action='/admin/promotion/delete/<%= promotion.id %>' method="post">
+                        <button type='submit' class='btn btn-danger'>Delete</button>
+                    </form>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footerAdmin.ejs') %>

@@ -1,0 +1,49 @@
+<%- include('partials/headerLogin.ejs') %>
+<main class="container my-5" style='margin-bottom: 15%;'>
+    <div class='row bg-white' style='border-radius: 15px;'>
+        <div class='col-xl-7 ms-0 ps-0'>
+          <img class='img-login'src='/picture/login.jpg' style='object-fit: cover; width:100%;'>
+        </div>
+        <div class='col-xl-5 my-auto text-start'>
+          <form action="/login" method="post">
+            <div class='box'>
+              <% if(error && error.length > 0) { %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong><%= error %></strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <%}%>
+              <% if(success && success.length > 0) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong><%= success %></strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <%}%>
+            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+            <div class="row">
+              <div class="col-1">
+                <i class="fas fa-user mt-3" style='font-size: 25px;'></i>
+              </div>
+              <div class="form-floating pb-3 col-11">
+                <input type="text" class="form-control"  name="username" placeholder="Username">
+                <label style='margin-left: 20px;'for="username">Username</label>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <i class="fas fa-lock mt-3" style='font-size: 24px;'></i>
+              </div>
+            <div class="form-floating pb-3 col-11">
+              <input type="password" class="form-control" name="password" placeholder="Password">
+              <label style='margin-left: 20px;' for="password">Password</label>
+            </div>
+            </div>
+              <button class="w-100 btn btn-lg btn-primary button mb-3" type="submit">Login</button>
+              <br>
+              <a href="/signup">Create your account</a>
+            </div>
+          </form>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer.ejs') %>

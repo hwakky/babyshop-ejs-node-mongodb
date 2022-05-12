@@ -1,0 +1,76 @@
+<%- include('partials/headerNavbarInput.ejs') %>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+<div class='p-3 mb-5'>
+  <div class='container'>
+    <% if(error && error.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" style='position:absolute;'>
+        <strong><%= error %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <%}%>
+    <% if(success && success.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><%= success %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <%}%>
+  </div>
+  <div class='container pt-3 pb-2 bg-white rounded-3'>
+    <div class='mx-3'>
+      <h1>MY PROFILE</h1>
+      <hr>
+    </div>
+    <form action="/user/profile" method="post" enctype="multipart/form-data">
+        <div class="container row py-4">
+          <div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center mt-0 mb-5'>
+            <% if(typeof(currentUser.image) == 'undefined') { %>
+            <img src='/picture/addphoto.png' id='output' style='height: 200px; width: 200px; object-fit: cover; border-radius: 50%;'>
+            <% } else { %>
+            <img src='<%= user.image %>' id='output' style='height: 200px; width: 200px; object-fit: cover; border-radius: 50%;'>
+            <% } %>
+            <div class='fileUpload'>
+              <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
+              <label for="file" class="btn-3">
+                <span>Upload Image</span>
+              </label>
+            </div>
+          </div>
+          <div class='col-xl-8 col-lg-8 col-md-6 col-sm-12'>
+            <div class='row'>
+              <div class="mb-3 col-lg-6 col-md-12">
+                <label class="form-label">Fullname</label>
+                <input type="text" class="form-control" name="user[fullname]" placeholder="Firstname Lastname" value='<%= user.fullname%>'>
+              </div>
+              <div class="mb-3 col-lg-6 col-md-12">
+                <label class="form-label">Phone</label>
+                <input type="number" class="form-control" name="user[phone]" placeholder="Phone number" value='<%= user.phone%>'>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="mb-3 col-lg-6 col-md-12">
+                  <label class="form-label">Email</label>
+                  <input type="text" class="form-control" name="user[email]" placeholder="Email" value='<%= user.email%>'>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Address</label>
+              <input type="text" class="form-control" name="user[address]" placeholder="Address" value='<%= user.address%>'>
+            </div>
+            <div class='text-end pt-3'>
+              <a class='btn btn-danger' href="/">Go back</a>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+<%- include('partials/footer.ejs') %>

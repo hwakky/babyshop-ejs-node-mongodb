@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
     Comment = require('./model/comment');
     User = require('./model/user');
 
-var dataItem = [
+const dataItem = [
         {   
             name: 'Blue Dog',
             image:'/picture/bluedog.png',
@@ -86,13 +86,6 @@ function seedDB(){
             console.log('Cart remove complete');
         }
     })
-    // User.remove({}, (err) => {
-    //     if(err){
-    //         console.log(err);
-    //     } else {
-    //         console.log('User remove complete');
-    //     }
-    // })
     Item.remove({}, (err) => {
         if(err){
             console.log(err);

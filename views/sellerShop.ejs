@@ -1,0 +1,124 @@
+<%- include('partials/headerNavbar.ejs') %>
+<script>
+    function liveSearch() {
+    // Declare variables
+    var input, filter, table, li, a, i, txtValue,bValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table");
+    li = table.getElementsByClassName('search');
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+</script>
+<div class='p-3 mb-5'>
+    <div class='container bg-white rounded-3 pb-3'>
+        <div class='container mb-3 pt-3'>
+            <div class='row'>
+                <div class='col-6'>
+                    <h1>
+                        <% if(typeof(user.image) == 'undefined') { %>
+                            <i class="fas fa-user me-3" style='font-size: 50px;'></i><%= user.username %>
+                          <% } else { %>
+                            <img  class='me-3'src='<%= user.image %>' style='height: 50px; width: 50px; border-radius: 50%; object-fit:cover;'><%= user.username %>
+                          <% } %>
+                    </h1>
+                </div>
+                <div class='col-6 d-flex justify-content-end'>
+                    <input class="form-control" size='50%' type="search" placeholder="Search for product name" aria-label="Search" id='myInput' onkeyup="liveSearch()">
+                </div>
+            </div>
+            <hr>
+        </div>
+        <% if(item.lenght == 0) { %>
+        <div class='mx-3 mt-3'>
+            <h3>No item selling</h3>
+        </div>
+        <% } else { %>
+        <div class="album pb-5">
+            <div class="container font-roberto">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id='table'>
+                    <% item.forEach((item) => { %>
+                    <% var avgRating; %>
+                    <% if(item.comments.length == 0){ %>
+                    <%  avgRating = 0; %>                                                  
+                    <% }else{ var i = 0,j= item.comments.length; %>
+                        <% item.comments.forEach(function(comment){ %>
+                        <% if(typeof(comment.rating) == 'undefined') { %>
+                        <% j-- %>
+                        <% } else { %>
+                            <% i = i + comment.rating %>
+                        <% } %>
+                        <% }); %>
+                        <% avgRating = (i/j).toFixed(1) %>
+                    <% } %>
+                    <% if(isNaN(avgRating) || avgRating == 0){ %>
+                    <% avgRating=0 %>
+                    <% } %>
+                    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 search">
+                        <div class="card shadow-sm px-2 pt-2 pb-0" style='border-radius: 12px;'>
+                            <div class='star'>
+                                <img src='<%= item.image %>' height="300px" width="100%" class='card-img-top' style="object-fit: cover; border-radius: 12px;">
+                                <% var txtRate; %>
+                                <% if(avgRating == 0){ %>
+                                  <% txtRate='No one rate this product' %>
+                                  <% } else { %>
+                                  <% txtRate = avgRating + ' / 5.0' %>
+                                  <% } %>
+                                <div class='top-right'>
+                                  <% if(!currentUser){ %>
+                                    <form action='/user/favorite/add/<%= item.id %>' method='post' style="display: inline;">
+                                      <button class='btn'><i class="far fa-heart"></i></button>
+                                    </form>
+                                  <% } else { %>
+                                  <% if((currentUser.favorite).includes(item.id)) {%>
+                                    <form action='/user/favorite/remove/<%= item.id %>' method='post' style="display: inline;">
+                                      <button class='btn'><i class="fas fa-heart" style='color: red;'></i></button>
+                                    </form>
+                                  <% } else { %>
+                                    <form action='/user/favorite/add/<%= item.id %>' method='post' style="display: inline;">
+                                      <button class='btn'><i class="far fa-heart"></i></button>
+                                    </form>
+                                  <% } %>
+                                  <% } %>
+                                    <i class="fas fa-star" style='color: orange; display: inline;' title='<%= txtRate %>'></i>
+                                </div>
+                              </div>
+                        <div class="card-body py-2 px-1">
+                            <h5 class='card-title item' style='min-height: 50px;'><%= item.name %></h5>
+                            <div class="d-flex justify-content-between align-items-center row">
+                            <div class="card-text col-10 d-block">
+                                <p class="">Sold : <%= item.sold %></p>
+                            </div>
+                            <div class="d-grid col-2 mb-3 justify-content-end">
+                                <a href = '/show/<%= item._id%>' class = "btn btn-sm btn-outline-secondary bg-view">View</a>
+                            </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center row">
+                            <div class='col-6'>
+                                <h4 class="card-text justify-content-start">฿<%= item.price %></h4>
+                            </div>
+                            <div class="col-6 text-end">
+                                <form action="/cart/<%= item._id %>" method="post">
+                                <button type="submit" class="btn btn-xl btn-primary login border border-0 px-1">Add to cart</button>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+  </div>
+  </div>
+  <%- include('partials/footer.ejs') %>

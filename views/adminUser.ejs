@@ -1,0 +1,145 @@
+<%- include('partials/headerNavbarAdmin.ejs') %>
+<script>
+    function liveSearch() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue,bValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table");
+    li = table.getElementsByClassName('search');
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+
+  function liveSearch2() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue,bValue;
+    input = document.getElementById('myInput2');
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table2");
+    li = table.getElementsByClassName('search2');
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item2")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+</script>
+<div class='container pt-3 pb-5'>
+            <h1 class=''>
+                <% if(currentUser) { %>
+                    <% if(currentUser.masterAdmin == true) { %>
+                        Manage Admins and Users
+                <% } else { %>
+                    Manage Users
+                <% } %>
+                <% } %>
+            </h1>
+    <hr>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-6'>
+                <h2>Users</h2>
+            </div>
+            <div class='col-6 d-flex justify-content-end'>
+                <input class="form-control" size='50%' type="search" placeholder="Search for username" aria-label="Search" id='myInput' onkeyup="liveSearch()">
+            </div>
+            <hr class='mt-3'>
+        </div>
+        <table class="table" id='table' style='word-wrap: break-word; table-layout: fixed;'>
+            <thead>
+            <tr>
+                <th scope="col" style='width: 20%;'>Username</th>
+                <th scope="col" style='width: 25%;'>Fullname</th>
+                <th scope="col" style='width: 25%;'>Email</th>
+                <th scope="col" style='width: 30%;' class='text-center'>Action</th>
+            </tr>
+            </thead>
+            <div>
+                <% user.forEach((account) => { %>
+                <tbody class=''>
+                <tr class='align-middle search'>
+                    <th scope="row" class='item'><%= account.username %></th>
+                    <td><%= account.fullname %></td>
+                    <td><%= account.email %></td>
+                    <td class='justify-content-between text-center'> 
+                        <div class='row'>
+                            <div class='col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12'>
+                                <a href='/admin/info/<%= account.id %>' class='btn p-0'><i class='bx bx-info-circle' >Info</i></a>
+                            </div>
+                            <form class='col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12' onsubmit="if(!confirm('Are you sure?')){return false;}" action='/admin/user/delete/<%= account._id %>' method='post'>
+                                <button type='submit' class='btn p-0'><i class='bx bx-trash'>Delete</i></button>
+                            </form>
+                            <form class='col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12' onsubmit="if(!confirm('Are you sure?')){return false;}" action='/admin/user/promote/<%= account._id %>' method='post'>
+                                <button type='submit' class='btn p-0'><Admin class='bx bxs-chevrons-up'>Admin</i></button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <% }); %>
+            </div>
+        </table>
+    </div>
+    <% if(typeof(admin) == 'undefined') { %>
+    <% } else { %>
+    <div class='container pt-5'>
+        <div class='row'>
+            <div class='col-6'>
+                <h2>Admins</h2>
+            </div>
+            <div class='col-6 d-flex justify-content-end'>
+                <input class="form-control" size='50%' type="search" placeholder="Search for username" aria-label="Search" id='myInput2' onkeyup="liveSearch2()">
+            </div>
+            <hr class='mt-3'>
+        </div>
+        <table class="table" id='table2'>
+            <thead>
+            <tr>
+                <th scope="col" style='width: 20;'>Username</th>
+                <th scope="col" style='width: 25%;'>Fullname</th>
+                <th scope="col" style='width: 25%;'>Email</th>
+                <th scope="col" class='text-center' style='width: 30%;'>Action</th>
+            </tr>
+            </thead>
+            <div>
+                <% admin.forEach((account) => { %>
+                <tbody class=''>
+                <tr class='align-middle search2'>
+                    <th scope="row" class='item2'><%= account.username %></th>
+                    <td><%= account.fullname %></td>
+                    <td><%= account.email %></td>
+                    <td class='justify-content-between text-center'> 
+                        <div class='row'>
+                            <div class='col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12'>
+                                <a href='/admin/info/<%= account.id %>' class='btn p-0'><i class='bx bx-info-circle' >Info</i></a>
+                            </div>
+                            <form class='col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12' onsubmit="if(!confirm('Are you sure?')){return false;}" action='/admin/user/delete/<%= account._id %>' method='post'>
+                                <button type='submit' class='btn p-0'><i class='bx bx-trash'>Delete</i></button>
+                            </form>
+                            <form class='col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12' onsubmit="if(!confirm('Are you sure?')){return false;}" action='/admin/user/downgrade/<%= account._id %>' method='post'>
+                                <button type='submit' class='btn p-0'><Admin class='bx bxs-chevrons-down'>User</i></button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <% }); %>
+            </div>
+        </table>
+    </div>
+    <% } %>
+    
+</div>
+<%- include('partials/footerAdmin.ejs') %>

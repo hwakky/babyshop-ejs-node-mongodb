@@ -1,0 +1,94 @@
+<%- include('partials/headerNavbarAdmin.ejs') %>
+<div class='container pt-3' >
+  <div class='row'>
+    <div class='col-12'>
+        <h1 class=''>Manage Product<i class="fas fa-arrow-right mx-4"></i><%= item.name %></h1>
+    </div>
+  </div>
+  <hr>
+  <div class='card px-4 py-4 bg-view' style="border-radius: 12px;">
+    <div class='row'>
+    <div class='col-xxl-4 col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 justify-content-start px-2'>
+        <img class='p-2' src='<%= item.image %>' height='400px' width="100%" style='object-fit: cover; border-radius: 15PX;'>
+    </div>
+    <div class='col-xxl-8 col-xl-7 col-lg-7 cok-md-12 col-sm-12 col-12 ps-5'>
+        <h1 class='pt-3'>Name : <%= item.name %></h1>
+        <h4 class='pt-2'>Price : ฿<%= item.price%></h4>
+        <p class='pt-3'>Category : <%= item.category %></p>
+        <p>Stock : <%= item.stock %></p>
+        <p style="height: 100px;">Description : <%= item.desc %></p>
+        <div class='row'>
+            <div class='col-5 col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5'>
+            <form action="/cart/<%= item._id %>/now" method="post">
+                <button type="submit" class="btn btn-xl btn-primary login border border-0 mt-3" style = 'font-size: 20px;'>Buy it now</button>
+            </form>
+            </div>
+            <div class='col-7 col-xxl-4 col-xl-4 col-lg-5 col-md-8 col-sm-7 ps-0'>
+            <form action="/cart/<%= item._id %>" method="post">
+                <button type="submit" class="btn btn-xl btn-primary login border border-0 mt-3" style = 'font-size: 20px;'>Add to my cart</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class='container mt-2'>
+        <div class='row'>
+            <div class='col-12 col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 text-center'>
+                <span>Sell by : </span>
+                <a href='/seller/shop/<%= item.author.id%>' class='text-decoration-none text-dark'>
+                <% if(typeof(item.author.image) == 'undefined') { %>
+                    <i class="fas fa-user me-3"></i><%= item.author.username %>
+                <% } else { %>
+                    <img  class='me-3'src='<%= item.author.image %>' style='height: 50px; width: 50px; border-radius: 50%; object-fit:cover;'><%= item.author.username %>
+                <% } %>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class='container mt-5 px-5'>
+    <h3>Comment</h3>
+</div>
+<div class='container px-5 pb-4'>
+    <% item.comments.forEach((comment) => { %>
+            <div class='row mt-4'>
+                <div class='col-10 col-xl-10 col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+                    <p class='h5'>
+                        <strong><%= comment.author.username %></strong>
+                    </p>
+                </div>
+                <div class="dropdown nav-item col-2 text-end">
+                    <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end drop-down-menu-lg-start" aria-labelledby="dropdownMenuLink">
+                    <li class='row'><a class="dropdown-item" data-toggle="reply-form" data-target="<%= comment.id %>-reply-form"><i class="fas fa-edit col-2 ps-1"></i><span class='ps-2 col-10'>Edit</span></a></li>
+                    <form onsubmit="if(!confirm('Are you sure?')){return false;}" action="/comment/<%= comment.id %>/delete" method='post'>
+                        <li class='row'><button type='submit' class="dropdown-item"><i class="fas fa-trash-alt col-2 ps-1"></i><span class='ps-2 col-10'>Delete</span></button></li>
+                    </form>
+                    </ul>
+                </div>
+            </div>
+        <div class='row'>
+            <p class='col-12 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-1' id="<%= comment.id%>-reply-form-2"><%= comment.text %></p>
+            <form action="/comment/<%=comment.id%>/edit" method="post" class="reply-form d-none" id="<%= comment.id%>-reply-form">
+                <textarea rows="2" name='text'><%= comment.text %></textarea>
+                <div class='d-flex justify-content-end'>
+                    <button type="button" class='btn btn-danger mx-2' data-toggle="reply-form" data-target="<%= comment.id%>-reply-form">Cancel</button>
+                    <button type="submit" class='btn btn-primary'>Submit</button>
+                </div>
+            </form>
+            <div class='col-6 d-flex justify-content-start'>
+                <% var i; %>
+                <% for(i=1;i <= comment.rating;i++){ %>
+                    <i class="fas fa-star" style='color: orange;'></i>
+                <% } %>
+            </div>
+            <p class='col-6 col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 text-end mt-1 mb-0'><%= comment.date %></p>
+        </div>
+        <hr class='mt-0 mb-4'>
+    <% }); %>
+</div>
+    
+   
+</div>
+<%- include('partials/footerAdmin.ejs') %>

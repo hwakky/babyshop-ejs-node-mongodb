@@ -1,0 +1,152 @@
+<%- include('partials/headerNavbar.ejs') %>
+<script>
+function liveSearch() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue,bValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByClassName('search');
+
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+}
+function sort(event){
+  var sortBy = document.querySelector('#sort-by');
+      item = document.querySelectorAll('.search');
+      ul = document.getElementById("myUL");
+      let itemsArray = Array.prototype.slice.call(item,0);
+      itemsArray = itemsArray.sort(function(a, b) {
+      let aVal = ('stock' == sortBy.value) ? a.dataset.stock : ('rating' == sortBy.value) ? a.dataset.rating : ('none' == sortBy.value) ? a.dataset.none : ('price-high' == sortBy.value) ? parseInt(a.dataset.price) : ('price-low' == sortBy.value) ? parseInt(a.dataset.price) : a.dataset.name.toLowerCase();
+      let bVal = ('stock' == sortBy.value) ? b.dataset.stock : ('rating' == sortBy.value) ? b.dataset.rating : ('none' == sortBy.value) ? b.dataset.none : ('price-high' == sortBy.value) ? parseInt(b.dataset.price) : ('price-low' == sortBy.value) ? parseInt(b.dataset.price) : b.dataset.name.toLowerCase();
+      if(sortBy.value == 'price-high' || sortBy.value == 'rating' || sortBy.value == 'stock'){
+          return aVal > bVal ? -1 : 1;
+      } else {
+          return aVal > bVal ? 1 : -1;
+      }
+      });
+      ul.innerHTML = '';
+      itemsArray.forEach((item,index) => {
+        ul.append(item);
+      });
+}
+</script>
+<div class='p-3 mb-5'>
+  <div class='container'>
+    <% if(error && error.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" style='position:absolute;'>
+        <strong><%= error %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <%}%>
+    <% if(success && success.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><%= success %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <%}%>
+  </div>
+  <div class='container pt-3 pb-2 bg-white rounded-3' style='min-height: 500px;'>
+    <div class='container mb-3'>
+      <div class='row'>
+        <div class='row col-xxl-6 col-12'>
+          <div class='col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+            <h1>YOUR SHOP</h1>
+          </div>
+          <div class='col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-flex justify-content-end'>
+            <a href='/seller/new' class="btn btn-xl btn-primary login border border-0" style='font-size: 30px;'>Add new Item</a>
+          </div>
+        </div>
+        <div class='row col-xxl-6 col-12'>
+          <div class='col-xxl-7 col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 d-flex justify-content-end m-top'>
+            <input class="form-control" size='50%' type="search" placeholder="Search for product name" aria-label="Search" id='myInput' onkeyup="liveSearch()">
+          </div>
+          <div class='col-xxl-5 col-xl-5 col-lg-5 col-12 text-end mt-3 '>
+            <span>Sort by : </span>
+            <select id='sort-by' onchange="sort()">
+              <option value='none'>None</option>
+              <option value='name'>Name</option>
+              <option value='price-low'>Price low to high</option>
+              <option value='price-high'>Price high to low</option>
+              <option value='rating'>Rating</option>
+              <option value='stock'>Stock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <% if(item.length == 0){ %>
+      <div class='container pt-3'>
+        <h3>No item in your shop</h3>
+      </div>
+    <% } else { %>
+      <div class="album pb-5 font-roberto">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id='myUL'>
+            <% item.forEach((item) => { %>
+              <% var avgRating; %>
+              <% if(item.comments.length == 0){ %>
+              <%  avgRating = 0; %>                                                  
+              <% }else{ var i = 0,j= item.comments.length; %>
+                <% item.comments.forEach(function(comment){ %>
+                  <% if(typeof(comment.rating) == 'undefined') { %>
+                  <% j-- %>
+                  <% } else { %>
+                    <% i = i + comment.rating %>
+                  <% } %>
+                <% }); %>
+                <% avgRating = (i/j).toFixed(1) %>
+              <% } %>
+              <% if(isNaN(avgRating) || avgRating == 0){ %>
+              <% avgRating=0 %>
+              <% } %>
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 search" data-name='<%= item.name %>' data-price='<%= item.price %>' data-rating='<%= avgRating %>' data-stock='<%= item.stock %>'>
+              <div class="card shadow-sm p-2" style='border-radius: 12px;'>
+                <div class='star'>
+                  <img src='<%= item.image %>' height="300px" width="100%" class='card-img-top' style="object-fit: cover; border-radius: 12px;">
+                  <% var txtRate; %>
+                  <% if(avgRating == 0){ %>
+                    <% txtRate='No one rate this product' %>
+                    <% } else { %>
+                    <% txtRate = avgRating + ' / 5.0' %>
+                    <% } %>
+                  <i class="fas fa-star top-right" style='color: orange;' title='<%= txtRate %>'></i>
+                </div>
+                <div class="card-body px-0 py-2">
+                  <h5 class='card-title item'style='min-height: 50px;'><%= item.name %></h5>
+                  <div class="d-flex justify-content-between align-items-center row">
+                    <p class="card-text col-10 d-block">Stock : <%= item.stock %></p>
+                    <div class="d-grid col-2 mb-3 justify-content-end">
+                      <a href = '/show/<%= item._id%>' class = "btn btn-sm btn-outline-secondary">View</a>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="card-text col-8 justify-content-start">฿<%= item.price %></h4>
+                    <div class="d-grid gap-2 col-4 justify-content-end">
+                      <a href='/seller/edit/<%= item._id%>' class="btn btn-xl btn-primary login border border-0">Edit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='text-center pt-3'>
+                <form onsubmit="if(!confirm('yes/no?')){return false;}" action='/seller/delete/<%= item._id%>' method="post">
+                  <button type='submit' class='btn btn-danger'>Delete</button>
+                </form>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+  </div>
+</div>
+<%- include('partials/footer.ejs') %>

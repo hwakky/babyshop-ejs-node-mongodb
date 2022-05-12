@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/style/index.css">
+    <link rel="stylesheet" href="/style/uploadFile.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script
+    src="https://kit.fontawesome.com/64d58efce2.js"
+    crossorigin="anonymous"
+  ></script>
+    <title>AxPress</title>
+</head>
+<body>
+<!-- <div class='bg-nav'> -->
+<nav class="navbar navbar-expand-lg navbar-light py-1 pt-3 container">
+    <div class="container-fluid text-white">
+      <div class='col-xxl-2 col-xl-2 col-lg-3 col-md-3 col-sm-3 pt-2 '>
+      <a href='/'><img src='/picture/axpress.png' class="navbar-brand" width="150px"></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="col-xxl-10 col-xl-10 col-lg-9 col-md-9 col-sm-9 collapse navbar-collapse mt-2" id="navbarSupportedContent">
+        <div class='col-xxl-7 col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12'>
+          <form action='/search' method="post" class="d-flex">
+            <input class="form-control me-2" size='50%' type="search" placeholder="Search for product name or category" aria-label="Search" name='search' id='myInput' onkeyup="liveSearch()">
+            <button class="btn btn-outline-warning" type="submit">Search</button>
+          </form>
+        </div>
+        <ul class="col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12 navbar-nav mb-2 mb-lg-0">
+          <% if(!currentUser) {%>
+          <div class='col-xxl-5 col-xl-4 col-lg-4 col-md-0 col-sm-0 col-0'></div>
+          <li class="nav-item col-xxl-2 col-xl-2 pt-1 pe-2 text-start m-top">
+            <a href='/login' class='text-decoration-none'><i class="fas fa-shopping-cart fa-2x" style='color:orange'></i></a>
+          </li>
+          <li class="nav-item col-xxl-2 col-xl-2 col-lg-3">
+            <a class="nav-link text-start" href="/login">Login</a>
+          </li>
+          <span class='my-auto text-hide me-3' style='font-size: 15pt;'>|</span>
+          <li class="nav-item col-xxl-3 col-xl-3 col-lg-3">
+            <a class="nav-link text-start" href="/signup">Sign up</a>
+          </li>
+          <% } else { %>
+            <div class='col-xxl-3 col-xl-2 col-lg-1 col-md-0 col-sm-0 col-0'></div>
+            <li class="nav-item col-xxl-2 col-xl-2 col-lg-3 col-md-12 col-sm-12 col-12 text-start m-top pt-1 pe-2">
+              <a href='/cart/<%= currentUser.id %>' class='text-decoration-none'><i class="fas fa-shopping-cart fa-2x" style='color:orange'></i></a>
+            </li>
+            <li class="nav-item col-xxl-3 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 text-start m-top">
+              <a class="nav-link btn btn-primary px-2" style="width:fit-content" href="/seller">For seller</a>
+            </li>
+            <li class="dropdown nav-item col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 pt-2 m-top user-nav">
+              <a class="dropdown-toggle text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <% if(typeof(currentUser.image) == 'undefined') { %>
+                  <i class="fas fa-user me-3"></i><%= currentUser.username %>
+                <% } else { %>
+                  <img  class='me-3'src='<%= currentUser.image %>' style='height: 30px; width: 30px; border-radius: 50%; object-fit:cover;'><%= currentUser.username %>
+                <% } %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+                <li class='row'><a class="dropdown-item" href="/user/profile"><i class="fas fa-address-card col-2 ps-1"></i><span class='col-10 ps-1'>Profile</span></a></li>
+                <li class='row'><a class="dropdown-item" href="/user/history"><i class="fas fa-history col-2 ps-1"></i><span class='col-10 ps-1'>Purchase history</span></a></li>
+                <li class='row'><a class="dropdown-item" href="/user/favorite"><i class="fas fa-heart col-2 ps-1"></i><span class='col-10 ps-1'>Favorite product</span></a></li>
+                <li class='row'><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt col-2 ps-1"></i><span class='col-10 ps-1'>Log out</span></a></li>
+              </ul>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+      
+    </div>
+</nav>
+<!-- </div> -->

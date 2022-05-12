@@ -1,0 +1,65 @@
+<%- include('partials/headerNavbar.ejs') %>
+<div class='p-3 mb-5'>
+  <div class='container pt-3 pb-2 bg-white rounded-3' style='min-height: 500px;'>
+    <div class='mx-3'>
+        <h1>PURCHASE HISTORY</h1>
+        <hr>
+    </div>
+    <% if(transaction.length == 0){ %>
+      <div class='mx-3 mt-3'>
+        <h3>No purchase history</h3>
+    </div>
+    <% } else { %>
+<!-- <div class='container row mx-auto mt-3 justify-content-between'> -->
+    <div class='col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 mx-auto font-roberto'>
+    <% transaction.forEach((order) => { %>
+<div class='container row my-3 total-box mx-auto' style='border:black solid 1px;'>
+        <% var subtotal = 0,fee=100 %>
+        <div class='my-3'>
+            <h3>Transaction No. <%= order.id %></h3>
+        </div>
+        <hr>
+    <% order.product.forEach((product) => { %>
+      <div class='mt-3'></div>
+      <div class='col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4'>
+        <img src='<%= product.image %>' style="height: 125px; width: 125px; border-radius: 12px;" class='card-img-top'>
+      </div>
+      <div class='col-xxl-7 col-xl-7 col-lg-6 col-md-4 col-sm-4 col-4 ps-5'>
+        <h3><%= product.name %></h3>
+        <h5>฿<%= product.price %></h5>
+        <h5>x <%= product.quantity %></h5>
+      </div>
+      <div class='col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4 text-end'>
+        <h3>฿<%= product.price * product.quantity %></h3>
+      </div>
+      <div class='container mt-2'>
+        <div class='row'>
+            <div class='col-12 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12'>
+              <span>Sell by : </span>
+              <% if(typeof(product.sellerImage) == 'undefined') { %>
+                  <i class="fas fa-user me-3"></i><%= product.sellerName %>
+              <% } else { %>
+                  <img  class='me-3'src='<%= product.sellerImage %>' style='height: 50px; width: 50px; border-radius: 50%; object-fit:cover;'><%= product.serllerName %>
+              <% } %>
+            </div>
+        </div>
+    </div>
+    <% subtotal = subtotal + (product.quantity * product.price) %>
+    <hr class='my-3'>
+    <% }); %>
+    <% total = subtotal + fee %>
+    <div class='col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-start'>
+        <h5>Shipping fee : ฿<%= fee %></h5>
+    </div>
+    <div class='col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-end'>
+        <h1>Total : ฿<%= total %></h1>
+    </div>
+</div>
+    <% }); %>
+    <!-- </div> -->
+</div>
+<% } %>
+</div>
+</div>
+<%- include('partials/footer.ejs') %>
+

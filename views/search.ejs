@@ -1,0 +1,242 @@
+<%- include('partials/headerNavbarSearch.ejs') %>
+<script>
+  function liveSearch() {
+    // Declare variables
+    var input, filter, ul, li, a, i, txtValue,bValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByClassName('search');
+
+    word = document.getElementById('word');
+
+    word.innerText = input.value; 
+    word.value = input.value;
+    // Loop through all list items, and hide those who don't match the search query
+    min = document.getElementById('min').value;
+    max = document.getElementById('max').value;
+    if(min != '' && max == ''){
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      b = li[i].getElementsByClassName('cate')[0];
+      txtValue = a.textContent || a.innerText;
+      bValue = b.value;
+      price = li[i].getElementsByClassName("price")[0];
+      priceValue = parseInt(price.innerText);
+      if (txtValue.toUpperCase().indexOf(filter) > -1 && priceValue >= min) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+      }
+    } else if(min != '' && max != ''){
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      txtValue = a.textContent || a.innerText;
+      price = li[i].getElementsByClassName("price")[0];
+      priceValue = parseInt(price.innerText);
+      if (txtValue.toUpperCase().indexOf(filter) > -1 && priceValue <= max && priceValue >= min) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+      }
+    } else if(min == '' && max != ''){
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      txtValue = a.textContent || a.innerText;
+      price = li[i].getElementsByClassName("price")[0];
+      priceValue = parseInt(price.innerText);
+      if (txtValue.toUpperCase().indexOf(filter) > -1 && priceValue <= max) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+      }
+    } 
+    else {
+      for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByClassName("item")[0];
+      b = li[i].getElementsByClassName('cate')[0];
+      txtValue = a.textContent || a.innerText;
+      bValue = b.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1 || bValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+    }
+  }
+      function sort(event){
+        var sortBy = document.querySelector('#sort-by');
+            item = document.querySelectorAll('.search');
+            ul = document.getElementById("myUL");
+          let itemsArray = Array.prototype.slice.call(item,0);
+          itemsArray = itemsArray.sort(function(a, b) {
+            let aVal = ('rating' == sortBy.value) ? a.dataset.rating : ('none' == sortBy.value) ? a.dataset.none : ('price-high' == sortBy.value) ? parseInt(a.dataset.price) : ('price-low' == sortBy.value) ? parseInt(a.dataset.price) : a.dataset.name.toLowerCase();
+            let bVal = ('rating' == sortBy.value) ? b.dataset.rating : ('none' == sortBy.value) ? b.dataset.none : ('price-high' == sortBy.value) ? parseInt(b.dataset.price) : ('price-low' == sortBy.value) ? parseInt(b.dataset.price) : b.dataset.name.toLowerCase();
+            if(sortBy.value == 'price-high' || sortBy.value == 'rating'){
+              return aVal > bVal ? -1 : 1;
+            } else {
+              return aVal > bVal ? 1 : -1;
+            }
+          });
+
+          ul.innerHTML = '';
+          itemsArray.forEach((item,index) => {
+            ul.append(item);
+          });
+        }
+</script>
+<div class='p-3 mb-5'>
+  <div class='container row pt-3 pb-2 rounded-3 mx-auto'>
+    <div class='col-12 col-xxl-2 col-xl-2 col-lg-2 col-md-12 col-sm-12 py-2' style='height: fit-content;'>
+        <div class='row bg-search shadow' style='border-radius: 12px;'>
+          <h2 class='mt-2'>Filter</h2>
+          <div class='row mt-2 mb-3 mx-auto'>
+              <div class="col-6 px-1 ps-0">
+                <input type="number" class="form-control" onkeyup="liveSearch()" id='min' name="min" placeholder="Min">
+              </div>
+              <div class="col-6 px-1 pe-0">
+                <input type="number" class="form-control" onkeyup="liveSearch()" id='max' name="max" placeholder="Max">
+              </div>
+          </div>
+          <div class='row mx-auto mb-2'>
+            <a href='/search' class='btn btn-danger'>Clear filter</a>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='row col-12 mx-auto mt-3'>
+            <% category.forEach((type) => { %>
+              <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-4 col-sm-6 col-6 my-2 px-1">
+                  <a href='/category/<%= type.category %>' class="card shadow-sm text-center justify-contents-center" style="border-radius: 20px;;">
+                    <div class="category">
+                      <img src="<%= type.image %>" style="width:100%; height: 100px; border-radius: 20px;">
+                      <div class="bottom-left-search text-uppercase"><%= type.category %></div>
+                    </div>
+                  </a>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+    </div>
+
+    <div class='col-xxl-10 col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 rounded-3 py-2'>
+      <div class="album pt-3 mx-2 bg-search py-4 shadow" style='border-radius: 12px;'>
+          <div class='container mb-3'>
+            <div class='row'>
+              <div class='col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12'>
+                <% if(searchCategory != '') { %>
+                  <h2>All result for "<%= searchCategory %>" + "<span id='word' name='word'><%= word %></span>"</h2>
+                <% } else { %> 
+                <h2>All result for "<span id='word' name='word'><%= word %></span>"</h2>
+                <% } %>
+              </div>
+              <div class='col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 d-flex justify-content-end'>
+                <div class=''>
+                  Sort by
+                  <select id='sort-by' onchange="sort()">
+                    <option value='none'>None</option>
+                    <option value='name'>Name</option>
+                    <option value='price-low'>Price low to high</option>
+                    <option value='price-high'>Price high to low</option>
+                    <option value='rating'>Rating</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container font-roberto">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id='myUL'>
+              <% item.forEach((item) => { %>
+                  <% var avgRating; %>
+                  <% if(item.comments.length == 0){ %>
+                  <%  avgRating = 0; %>                                                  
+                  <% }else{ var i = 0,j= item.comments.length; %>
+                    <% item.comments.forEach(function(comment){ %>
+                      <% if(typeof(comment.rating) == 'undefined') { %>
+                      <% j-- %>
+                      <% } else { %>
+                        <% i = i + comment.rating %>
+                      <% } %>
+                    <% }); %>
+                    <% avgRating = (i/j).toFixed(1) %>
+                  <% } %>
+                  <% if(isNaN(avgRating) || avgRating == 0){ %>
+                  <% avgRating=0 %>
+                  <% } %>
+              <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 search" data-none='<%= item.date%>' data-name='<%= item.name %>' data-price='<%= item.price %>' data-rating='<%= avgRating %>'>
+                <div class="card shadow-sm px-2 pt-2 pb-0" style='border-radius: 12px;'>
+                  <div class='star-sm'>
+                    <img src='<%= item.image %>' height="200px" width="100%" class='card-img-top' style="object-fit: cover; border-radius: 12px;">
+                    <% var txtRate; %>
+                    <% if(avgRating == 0){ %>
+                      <% txtRate='No one rate this product' %>
+                      <% } else { %>
+                      <% txtRate = avgRating + ' / 5.0' %>
+                      <% } %>
+                    <div class='top-right-sm'>
+                      <% if(!currentUser){ %>
+                        <form action='/user/favorite/add/<%= item.id %>' method='post' style="display: inline;">
+                          <button class='bg-transparent border-0'><i class="far fa-heart"></i></button>
+                        </form>
+                      <% } else { %>
+                      <% if((currentUser.favorite).includes(item.id)) {%>
+                        <form action='/user/favorite/remove/<%= item.id %>' method='post' style="display: inline;">
+                          <button class='bg-transparent border-0'><i class="fas fa-heart" style='color: red;'></i></button>
+                        </form>
+                      <% } else { %>
+                        <form action='/user/favorite/add/<%= item.id %>' method='post' style="display: inline;">
+                          <button class='bg-transparent border-0'><i class="far fa-heart"></i></button>
+                        </form>
+                      <% } %>
+                      <% } %>
+                        <i class="fas fa-star" style='color: orange; display: inline;' title='<%= txtRate %>'></i>
+                    </div>
+                  </div>
+                  <!-- <img src='<%= item.image %>' height="200px" width="100%" class='card-img-top' style="object-fit: cover; border-radius: 12px;"> -->
+                  <div class="card-body py-2 px-1">
+                    <h5 class='card-title item' style='min-height: 50px; max-height: 50px;'><%= item.name %></h5>
+                    <span class='cate' style='display: none;'><%= item.category %></span>
+                    <div class="d-flex justify-content-between align-items-center row">
+                      <div class="card-text col-10 d-block">
+                        <p class="">Sold : <%= item.sold %></p>
+                      </div>
+                      <div class="d-grid col-2 mb-3 justify-content-end">
+                        <a href = '/show/<%= item._id%>' class = "btn btn-sm btn-outline-secondary bg-view shadow-sm">View</a>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center row">
+                      <div class='col-6'>
+                        <h5 class="card-text justify-content-start">฿<span class='price'><%= item.price %></span></h5>
+                      </div>
+                      <div class="col-6 text-end">
+                        <form action="/cart/<%= item._id %>" method="post">
+                          <button type="submit" class="btn btn-xl btn-primary login border border-0 px-1 shadow-sm">Add to cart</button>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="mt-3 row">
+                      <span class='col-3'>By :</span>
+                      <div class='col-9 d-flex justify-content-end'>
+                        <a href='/seller/shop/<%= item.author.id%>' class='text-decoration-none text-dark'>
+                        <% if(typeof(item.author.image) == 'undefined') { %>
+                          <i class="fas fa-user me-2" style='font-size: 25px;'></i><%= item.author.username %>
+                        <% } else { %>
+                          <img  class='me-2'src='<%= item.author.image %>' style='height: 30px; width: 30px; border-radius: 50%; object-fit:cover;'><%= item.author.username %>
+                        <% } %>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+<%- include('partials/footer.ejs') %>
