@@ -1,0 +1,64 @@
+<%- include("partials/header/Main.ejs') %>
+    <%- include("partials/more/clothes.ejs") %>
+        <div class="positionHeader">
+            <h1>Welcome to clothes page</h1>
+        </div>
+        <div class="positionSort">
+            <p>sort by&nbsp;</p>
+            <select>
+                <option>-</option>
+                <option>Name</option>
+                <option>Price</option>
+                <option>Date</option>
+            </select>
+        </div>
+        <div class="positionFilter">
+            <p>Filter by&nbsp;</p>
+            <select>
+                <option>-</option>
+                <option>0 - 500</option>
+                <option>501 - 1000</option>
+            </select>
+        </div>
+
+        <div class="sp-container">
+
+            <div class="sp-block">
+                <% itemalls.forEach(function(itemalls){ %>
+                    <div class="card">
+                        <a href="/clothes/<%= itemalls._id %>">
+                            <img src="<%= itemalls.image %>" style="height:12rem; z-index: -1;">
+                            <div class="showdetailS">
+                                <p class="nameS">
+                                    <%= itemalls.name %>
+                                </p>
+                                <p class="discount">
+                                    <%= itemalls.discount %>
+                                </p>
+                                <!-- <p class="normalpriceS strikethrough"> -->
+                                <p class="normalpriceS">
+                                    <%= itemalls.price %> ฿
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="<%= Itemall._id %>">aa</a>
+            <a href="#">&raquo;</a>
+          </div>
+
+
+          
+    
+        <%- include("partials/footer.ejs") %>

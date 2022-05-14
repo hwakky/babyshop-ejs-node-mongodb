@@ -1,5 +1,6 @@
-var express = require('express');
-const   Item = require('../model/itemall');
+
+const   express = require('express');
+        Item = require('../model/itemall');
         Category = require('../model/category');
         Promotion = require('../model/promotion');
         router = express.Router();
@@ -24,7 +25,7 @@ const   Item = require('../model/itemall');
         },
         upload = multer({storage : storage, fileFilter : imageFilter});
 
-router.get('/', (req,res) => {
+router.get('/', function(req,res) {
     Item.find().sort({sold:-1}).limit(4).exec((err, allItems) => {
         if(err){
             console.log(err);
@@ -46,8 +47,8 @@ router.get('/', (req,res) => {
     });
 })
 
-router.get('/category', (req,res) => {
-    Category.find({}, (err,foundCategory) => {
+router.get('/category', function(req,res){
+    Category.find({}, function(err,foundCategory){
        if(err){
            console.log(err);
        } else {
@@ -56,11 +57,11 @@ router.get('/category', (req,res) => {
     });
 })
 
-router.post('/category/add',upload.single('image'), (req,res) => {
+router.post('/category/add',upload.single('image'), function(req,res){
     if(req.file){
         req.body.category.image = '/uploads/' + req.file.filename;
     }
-    Category.create(req.body.category, (err,newCategory) => {
+    Category.create(req.body.category, function(err,newCategory){
         if(err){
             console.log(err);
         } else {
@@ -69,8 +70,8 @@ router.post('/category/add',upload.single('image'), (req,res) => {
     })
 })
 
-router.post('/category/delete/:id', (req,res) => {
-    Category.findByIdAndRemove(req.params.id, (err,removedCategory) => {
+router.post('/category/delete/:id', function(req,res){
+    Category.findByIdAndRemove(req.params.id, function(err,removedCategory){
        if(err){
            console.log(err);
        } else {
@@ -80,12 +81,12 @@ router.post('/category/delete/:id', (req,res) => {
 })
 
 router.get('/user', (req,res) => {
-    User.find({admin : false}, (err, foundUser) => {
+    User.find({admin : false}, function(err, foundUser){
         if(err){
             console.log(err);
         } else {
             if(req.user.masterAdmin == true){
-                User.find({admin : true,masterAdmin:{$ne: true}},(err,foundAdmin) => {
+                User.find({admin : true,masterAdmin:{$ne: true}},function(err,foundAdmin){
                     if(err){
                         console.log(err);
                     } else {
@@ -99,8 +100,8 @@ router.get('/user', (req,res) => {
     })
 })
 
-router.post('/user/delete/:id', (req,res) => {
-    User.findByIdAndRemove(req.params.id, (err, user) => {
+router.post('/user/delete/:id', function(req,res){
+    User.findByIdAndRemove(req.params.id, function(err, user){
         if(err){
             console.log(err);
         } else {
@@ -109,8 +110,8 @@ router.post('/user/delete/:id', (req,res) => {
     });
 })
 
-router.post('/user/promote/:id', (req,res) => {
-    User.findByIdAndUpdate(req.params.id,{$set:{admin:true}}, (err, user) => {
+router.post('/user/promote/:id', function(req,res){
+    User.findByIdAndUpdate(req.params.id,{$set:{admin:true}}, function(err, user){
         if(err){
             console.log(err);
         } else {
@@ -119,8 +120,8 @@ router.post('/user/promote/:id', (req,res) => {
     });
 })
 
-router.post('/user/downgrade/:id', (req,res) => {
-    User.findByIdAndUpdate(req.params.id,{$set:{admin:false}}, (err, user) => {
+router.post('/user/downgrade/:id', function(req,res){
+    User.findByIdAndUpdate(req.params.id,{$set:{admin:false}}, function(err, user){
         if(err){
             console.log(err);
         } else {
@@ -129,8 +130,8 @@ router.post('/user/downgrade/:id', (req,res) => {
     });
 })
 
-router.get('/info/:id', (req,res) => {
-    User.findById(req.params.id, (err,foundUser) => {
+router.get('/info/:id', function(req,res){
+    User.findById(req.params.id, function(err,foundUser){
         if(err){
             console.log(err);
         } else {
@@ -139,11 +140,11 @@ router.get('/info/:id', (req,res) => {
     })
 })
 
-router.post('/info/edit/:id',upload.single('image'),(req,res) => {
+router.post('/info/edit/:id',upload.single('image'),function(req,res){
     if(req.file){
         req.body.user.image = '/uploads/' + req.file.filename;
     }
-    User.findByIdAndUpdate(req.params.id, req.body.user, (err,updateUser) => {
+    User.findByIdAndUpdate(req.params.id, req.body.user, function(err,updateUser){
             if(err){
                 console.log(err);
             } else {
@@ -152,8 +153,8 @@ router.post('/info/edit/:id',upload.single('image'),(req,res) => {
     });
 })
 
-router.get('/promotion', (req,res) => {
-    Promotion.find({},(err,foundPromotion) => {
+router.get('/promotion', function(req,res){
+    Promotion.find({},function(err,foundPromotion){
        if(err){
            console.log(err);
        } else {
@@ -162,9 +163,9 @@ router.get('/promotion', (req,res) => {
     });
 })
 
-router.post('/promotion/add', upload.single('image'), (req,res) => {
+router.post('/promotion/add', upload.single('image'), function(req,res){
     var image = '/uploads/' + req.file.filename;
-    Promotion.create({image:image}, (err,newPromotion) => {
+    Promotion.create({image:image}, function(err,newPromotion){
         if(err){
             console.log(err);
         } else {
@@ -174,8 +175,8 @@ router.post('/promotion/add', upload.single('image'), (req,res) => {
     
 })
 
-router.post('/promotion/delete/:id', (req,res) => {
-    Promotion.findByIdAndRemove(req.params.id, (err,removedPromotion) => {
+router.post('/promotion/delete/:id', function(req,res){
+    Promotion.findByIdAndRemove(req.params.id, function(err,removedPromotion){
        if(err){
            console.log(err);
        } else {
@@ -184,8 +185,8 @@ router.post('/promotion/delete/:id', (req,res) => {
     });
 })
 
-router.get('/product', (req,res) => {
-    Item.find({},(err,foundItem) => {
+router.get('/product', function(req,res){
+    Item.find({},function(err,foundItem){
         if(err){
             console.log(err);
         } else {
@@ -194,8 +195,8 @@ router.get('/product', (req,res) => {
     })
 })
 
-router.post('/product/delete/:id',(req,res) => {
-    Item.findByIdAndRemove(req.params.id,(err,deletedItem) => {
+router.post('/product/delete/:id',function(req,res){
+    Item.findByIdAndRemove(req.params.id,function(err,deletedItem){
         if(err){
             console.log(err);
         } else {
@@ -204,8 +205,8 @@ router.post('/product/delete/:id',(req,res) => {
     })
 })
 
-router.get('/product/:id', (req,res) => {
-    Item.findById(req.params.id).populate('comments').exec((err,foundItem) => {
+router.get('/product/:id', function(req,res){
+    Item.findById(req.params.id).populate('comments').exec(function(err,foundItem){
         if(err) {
             console.log(err);
         } else {

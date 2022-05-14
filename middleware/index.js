@@ -1,10 +1,10 @@
-var Item = require('../model/itemall');
+const Item = require('../model/itemall');
 
-var middlewareObj = [];
+const middlewareObj = [];
 
-middlewareObj.checkItemOwner = (req, res, next) => {
+middlewareObj.checkItemOwner = function(req, res, next){
     if(req.isAuthenticated()){
-        Item.findById(req.params.id, (err,foundItem) => {
+        Item.findById(req.params.id, function(err,foundItem){
             if(err){
                 req.flash('error','Product not found');
                 res.redirect('back');

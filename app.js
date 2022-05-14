@@ -10,10 +10,6 @@ const express   = require('express'),
       seedDB    = require('./seeds'),
       middlewareObj     = require('./middleware');
     
-// const option = {
-//     useNewUrlParser : true,
-//     useUnifiedTopology : true
-// }
 const indexRoutes = require('./routes/index'),
       cartRoutes = require('./routes/cart'),
       sellerRoutes = require('./routes/seller'),

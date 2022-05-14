@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var passportlocalMongoose = require('passport-local-mongoose');
-const Schema = mongoose.Schema;
-const UserSchema = new Schema({ 
+const mongoose = require('mongoose'),
+    passportlocalMongoose = require('passport-local-mongoose');
+// const Schema = mongoose.Schema;
+const UserSchema = new mongoose.Schema({ 
     username : {
         type : String,
         unique : true
@@ -11,6 +11,7 @@ const UserSchema = new Schema({
         unique : true
     },
     password : String,
+    fav:String,
     cart :[
         {
             type: mongoose.Schema.Types.ObjectId,
