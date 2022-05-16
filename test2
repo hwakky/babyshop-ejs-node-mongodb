@@ -1,31 +1,163 @@
 <div>
-        <table>
-          <tr>
-            <th>Product name</th>
-            <th>price</th>
-            <th>Amount</th>
-          </tr>
-          <tr>
-            <td>
-              
-              <h5><%= cart.productId.name %></h5>
-            </td>
-            <td><p><%= cart.productId.price %>฿</p></td>
-            <td>
-              <input type="number" onkeyup='disableProceed()' class="" name='quantity' id ='<%=cart._id%>' value='<%= cart.quantity%>' min='1' max='<%= cart.productId.stock %>'>
-              <span class='pt-1 text-center' style='display: block;'>stock : <%= cart.productId.stock %></span>
-            </td>
-            <td>
-              <p>฿<%= cart.productId.price * cart.quantity %></p>
-            </td>
-            <form action='/cart/remove/<%= cart._id %>' method="post">
-              <button class='btn btn-danger' style='width: fit-content;' type='submit'>Remove</button>
-            </form>
-          
-          
-          </tr>
-        </table>
-        <div class="sum">
-
+  <div>
+    <!-- filter -->
+    <div>
+      <h2>Filter</h2>
+      <div>
+        <div>
+          <input type="number" class="form-control" onkeyup="liveSearch()" id='min' name="min" placeholder="Min">
+        </div>
+        <div>
+          <input type="number" class="form-control" onkeyup="liveSearch()" id='max' name="max" placeholder="Max">
         </div>
       </div>
+      <div>
+        <a href='/search' class='btn btn-danger'>Clear filter</a>
+      </div>
+    </div>
+    <!-- info -->
+    <div class=''>
+      <div style='border-radius: 12px;'>
+        <div>
+          <div>
+            <div>
+              <% if(searchCategory !='' ) { %>
+                <h2>All result for "<%= searchCategory %>" + "<span id='word' name='word'>
+                      <%= word %>
+                    </span>"</h2>
+                <% } else { %>
+                  <h2>All result for "<span id='word' name='word'>
+                      <%= word %>
+                    </span>"</h2>
+                  <% } %>
+            </div>
+            <div>
+              <div>
+                Sort by
+                <select id='sort-by' onchange="sort()">
+                  <option value='none'>None</option>
+                  <option value='name'>Name</option>
+                  <option value='price-low'>Price low to high</option>
+                  <option value='price-high'>Price high to low</option>
+                  <option value='rating'>Rating</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div id='myUL'>
+            <% item.forEach((item)=> { %>
+              <% var avgRating; %>
+                <% if(item.comments.length==0){ %>
+                  <% avgRating=0; %>
+                    <% }else{ var i=0,j=item.comments.length; %>
+                      <% item.comments.forEach(function(comment){ %>
+                        <% if(typeof(comment.rating)=='undefined' ) { %>
+                          <% j-- %>
+                            <% } else { %>
+                              <% i=i + comment.rating %>
+                                <% } %>
+                                  <% }); %>
+                                    <% avgRating=(i/j).toFixed(1) %>
+                                      <% } %>
+                                        <% if(isNaN(avgRating) || avgRating==0){ %>
+                                          <% avgRating=0 %>
+                                            <% } %>
+                                              <div data-none='<%= item.date%>' data-name='<%= item.name %>'
+                                                data-price='<%= item.price %>' data-rating='<%= avgRating %>'>
+                                                <div style='border-radius: 12px;'>
+                                                  <div>
+                                                    <img src='<%= item.image %>' height="200px" width="100%"
+                                                      style="object-fit: cover; border-radius: 12px;">
+                                                    <% var txtRate; %>
+                                                      <% if(avgRating==0){ %>
+                                                        <% txtRate='No one rate this product' %>
+                                                          <% } else { %>
+                                                            <% txtRate=avgRating + ' / 5.0' %>
+                                                              <% } %>
+                                                                <div>
+                                                                  <% if(!currentUser){ %>
+                                                                    <form action='/user/favorite/add/<%= item.id %>'
+                                                                      method='post'>
+                                                                      <button class='bg-transparent border-0'><i
+                                                                          class="far fa-heart"></i></button>
+                                                                    </form>
+                                                                    <% } else { %>
+                                                                      <% if((currentUser.favorite).includes(item.id))
+                                                                        {%>
+                                                                        <form
+                                                                          action='/user/favorite/remove/<%= item.id %>'
+                                                                          method='post'>
+                                                                          <button class='bg-transparent border-0'><i
+                                                                              class="fas fa-heart"
+                                                                              style='color: red;'></i></button>
+                                                                        </form>
+                                                                        <% } else { %>
+                                                                          <form
+                                                                            action='/user/favorite/add/<%= item.id %>'
+                                                                            method='post' style="display: inline;">
+                                                                            <button class='bg-transparent border-0'><i
+                                                                                class="far fa-heart"></i></button>
+                                                                          </form>
+                                                                          <% } %>
+                                                                            <% } %>
+                                                                              <i class="fas fa-star"
+                                                                                style='color: orange; display: inline;'
+                                                                                title='<%= txtRate %>'></i>
+                                                                </div>
+                                                  </div>
+                                                  <!-- <img src='<%= item.image %>' height="200px" width="100%" class='card-img-top' style="object-fit: cover; border-radius: 12px;"> -->
+                                                  <div>
+                                                    <h5 style='min-height: 50px; max-height: 50px;'>
+                                                      <%= item.name %>
+                                                    </h5>
+                                                    <span style='display: none;'>
+                                                      <%= item.category %>
+                                                    </span>
+                                                    <div>
+                                                      <div>
+                                                        <p>Sold : <%= item.sold %>
+                                                        </p>
+                                                      </div>
+                                                      <div>
+                                                        <a href='/show/<%= item._id%>'>View</a>
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <div>
+                                                        <h5>฿<span>
+                                                            <%= item.price %>
+                                                          </span></h5>
+                                                      </div>
+                                                      <div>
+                                                        <form action="/cart/<%= item._id %>" method="post">
+                                                          <button type="submit">Add to cart</button>
+                                                        </form>
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <span>By :</span>
+                                                      <div>
+                                                        <a href='/seller/shop/<%= item.author.id%>'>
+                                                          <% if(typeof(item.author.image)=='undefined' ) { %>
+                                                            <i style='font-size: 25px;'></i>
+                                                            <%= item.author.username %>
+                                                              <% } else { %>
+                                                                <img src='<%= item.author.image %>'
+                                                                  style='height: 30px; width: 30px; border-radius: 50%; object-fit:cover;'>
+                                                                <%= item.author.username %>
+                                                                  <% } %>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

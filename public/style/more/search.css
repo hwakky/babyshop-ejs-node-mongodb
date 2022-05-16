@@ -1,0 +1,144 @@
+.maintable {
+  border-top: 0.1rem rgb(214, 213, 213) solid;
+  width: 100%;
+  height: 5rem;
+  background-color: white;
+  position: relative;
+  margin-top: 3rem;
+  bottom: 0;
+  z-index: -1;
+}
+.foot {
+  font-size: 2rem;
+}
+.icon1 {
+  position: relative;
+  left: 9rem;
+}
+.icon2 {
+  position: relative;
+  left: 5rem;
+}
+.icon3 {
+  position: relative;
+  left: 7rem;
+}
+
+.index-image {
+  object-fit: cover;
+  width: 5rem;
+}
+#btnScrollToTop{
+    display: none;
+}
+.block {
+  width: 80%;
+  height: 30rem;
+  margin: auto;
+  margin-top: 5rem;
+  background-color: rgba(277, 277, 277, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+
+}
+.box{
+    display: block;
+}
+.sort{
+    position: absolute;
+    right: 12rem;
+}
+.filter{
+    position: absolute;
+    right: 20rem;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem 1.5rem;
+}
+
+.imgC{
+    width: 100%;
+    height: 10rem;
+    object-fit: contain;
+}
+
+
+
+.heart{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top:-12rem;
+    right: -7rem;
+}
+.redH{
+    color: red;
+}
+.fa-star{
+    color: yellow;
+    position: relative;
+    top:-13.45rem;
+    right: -8.5rem;
+}
+.right{
+    position: relative;
+    right: 0;
+}
+.Right{
+    float: right;
+}
+.detail{
+    margin-top: -2rem;
+}
+.view{
+    background-color: white;
+    border: 0.1rem solid black;
+}
+.non{
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.card{
+    width:20rem;
+    height: 18rem;
+    background-color: rgba(94, 123, 219,0.4);
+    margin-top: 2rem;
+    border-width: 0.2rem;
+    border-style: dashed;
+    border-radius: 0.5rem;
+    border-color: white;
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
