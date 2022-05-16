@@ -1,4 +1,5 @@
 const express = require("express");
+const { route } = require("express/lib/application");
 const Item = require("../model/itemall");
 Comment = require("../model/comment");
 const Promotion = require("../model/promotion");
@@ -309,6 +310,11 @@ router.get("/category/:type", (req, res) => {
   );
 });
 
+router.get("/sell", (req, res) => {
+  res.render("sell.ejs");
+});
+
+
 router.get("/seller/shop/:id", (req, res) => {
   req.session.fromUrl = req.originalUrl;
   Item.find({ "author.id": req.params.id })
@@ -327,5 +333,6 @@ router.get("/seller/shop/:id", (req, res) => {
       }
     });
 });
+
 
 module.exports = router;

@@ -1,0 +1,523 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Permanent Marker", cursive;
+  cursor:none;
+}
+/* block_element */
+header {
+  width: 100%;
+  height: 6rem;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(red, rgba(255, 255, 255, 1));
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+/* header */
+.navbar__search {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.navbar__search--design {
+  background-color: #969494;
+  font-family: "Permanent Marker", cursive;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.navbar__search .logo {
+  width: 4rem;
+  padding: 0 1rem;
+}
+.navbar__search .logo:hover,
+#logotext:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+/* searchbar */
+.container__searchbar {
+  width: 9rem;
+  height: 2.5rem;
+  border-radius: 1.25rem;
+  position: relative;
+  transition: 0.5s;
+  overflow: hidden;
+  left: 2%;
+}
+.container__searchbar--design {
+  background: white;
+}
+.container__searchbar .icon {
+  position: absolute;
+  left: 1.3rem;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+
+.container__searchbar .icon .search {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: black;
+}
+
+.container__searchbar.active {
+  width: 90rem;
+}
+
+.container__searchbar .input {
+  position: relative;
+  width: 30rem;
+  height: 3rem;
+  left: 3rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.container__searchbar .input input {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.container__searchbar .input .clear {
+  position: absolute;
+  right: -57rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  font-size: 2rem;
+  color: #888;
+}
+
+/* icon */
+.icon__cart {
+  position: absolute;
+  right:2rem;
+}
+.icon__cart:hover {
+  color: white;
+  padding: 0.5rem;
+  border: 0.1rem white solid;
+  border-radius: 50%;
+}
+.icon__mute {
+    position: absolute;
+    right:8rem;
+}
+.icon__mute:hover {
+  color: white;
+  padding: 0.5rem;
+  border: 0.1rem white solid;
+  border-radius: 50%;
+}
+.icon__noti {
+    position: absolute;
+    right:5rem;
+}
+.icon__noti:hover {
+  color: white;
+  padding: 0.5rem;
+  border: 0.1rem white solid;
+  border-radius: 50%;
+}
+.navbar__list {
+  width: 100vw;
+  height: 2.2rem;
+  background-color: #c4c4c4;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+}
+.button__all {
+  width: 3.5rem;
+  text-align: center;
+}
+.button__all:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+.icon__list {
+  position: relative;
+  font-size: 1.5rem;
+}
+.text__list {
+  position: relative;
+  font-size: 1rem;
+  top: -0.3rem;
+}
+.save__button {
+  width: 3rem;
+  text-align: center;
+}
+.save__button:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+.sell__button {
+  width: 3rem;
+  text-align: center;
+}
+.sell__button:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+.signin__button {
+  position: absolute;
+  right: 6rem;
+  padding-right: 0.5rem;
+}
+.signin__button:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+.signup__button {
+  position: absolute;
+  right: 2.5rem;
+  border-left: white 0.1rem solid;
+  padding-left: 0.5rem;
+}
+.signup__button:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+
+.background {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+}
+.video-background {
+  position: fixed;
+}
+#space {
+  width: 100%;
+  height: 2000px;
+}
+
+/* sidebar */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(113, 224, 228,0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* top line */
+.topLine{
+    width: 100%;
+    height: 5rem;
+    background-color: rgba(134, 221, 224, 0.5);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    top: 4rem;
+}
+.topText{
+    font-size: 2rem;
+    color: black;
+    position: relative;
+    left: 4rem;
+}
+.topButton{
+    position: absolute;
+    right: 5rem;
+    border-radius: 20%;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: 0 9px #999;
+}
+.topButton:hover {
+    background-color: #ffffffa8;
+}
+.topButton:active {
+    background-color: #ffffffa8;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/* mainBox */
+.wrapper {
+  margin-top: 5rem;
+  display: grid;
+  grid-gap: 5rem;
+  grid-template-columns: repeat(1, [col] 150px ) ;
+  grid-template-rows: repeat(1, [row] auto  );
+  color: #444;
+}
+
+.box {
+  color: #000;
+  padding: 20px;
+  font-size: 1.5rem;
+
+}
+.box .box {
+  background-color: #ccc;
+  color: #444;
+}
+
+.a {
+  grid-column: col / span 2;
+  grid-row: row;
+}
+
+.b {
+  grid-column: col 3 / span 2;
+  grid-row: row;
+}
+
+.mainLogo{
+  width: 20rem;
+}
+
+.mainHead{
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+.buttonSignup{
+  padding: 0.2rem 0.4rem;
+  
+}
+.buttonSell{
+  padding: 0.2rem 0.4rem;
+  position: absolute;
+}
+.text{
+  color: red;
+  font-size: 0.8rem;
+}
+/* background */
+.bx-bitcoin {
+  animation: fall 10s linear forwards;
+  color: green;
+  position: absolute;
+  top: -20px;
+  z-index: -1;
+  font-size: 2rem;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(98vh);
+  }
+}
+
+.navbar__list {
+  width: 100vw;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 0.3rem dotted rgba(134, 221, 224, 0.5);
+  background-color: rgba(134, 221, 224, 0.5);
+}
+
+.navbar__search--design {
+  background-color: rgba(134, 221, 224, 0.5);
+  border: 0.2rem solid rgba(134, 221, 224, 0.5);
+  font-family: "Permanent Marker", cursive;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(134, 221, 224, 0.5), rgba(255, 255, 255, 1));
+}
+
+/* animate */
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+/* cursor */
+.cursor{
+  z-index: 999;
+  position: fixed;
+  background: #2696E8;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 20px #2696E8,
+              0 0 60px #2696E8,
+              0 0 100px #2696E8;
+  animation: colors 5s infinite;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+@keyframes colors{
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+
+.cursor:before{
+  content: '';
+  position: absolute;
+  background: #2696E8;
+  width: 50px;
+  height: 50px;
+  opacity: 0.2;
+  transform: translate(-30%, -30%);
+  border-radius: 50%;
+}
+
+/* animate */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.textdecor{
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: red;
+  font-size: 4rem;
+}
+
+.signin__button {
+  position: absolute;
+  right: 5.95rem;
+  padding-right: 0.5rem;
+}
+.signin__button:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+.signin__button2 {
+  position: absolute;
+  right: 6.5rem;
+  padding-left: 1rem;
+}
+.signin__button2:hover {
+  color: white;
+}
+.signin__button3 {
+  position: absolute;
+  right: 7rem;
+  padding-right: 1rem;
+}
+.signin__button3:hover {
+  color: white;
+}
+.signup__button {
+  position: absolute;
+  right: 2.5rem;
+  border-left: black 0.1rem solid;
+  padding-left: 0.5rem;
+}
+.signup__button:hover {
+  color: white;
+  padding: 0.25rem;
+  border: 0.1rem white solid;
+}
+.signup__button2 {
+  position: absolute;
+  text-align: center;
+  right: 2rem;
+  border-left: black 0.1rem solid;
+  padding-left: 1rem;
+}
+.signup__button2:hover {
+  color: white;
+}

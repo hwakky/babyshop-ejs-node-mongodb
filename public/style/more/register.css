@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Permanent Marker", cursive;
+  cursor: none;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+::selection{
+  color: red;
+  background: pink;
+}
+h1 {
+  font-size: 5rem;
+}
+a{
+  color: rgba(155, 155, 155, 0.8);
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#finish{
+  color:black;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.text {
+  text-align: center;
+}
+
+/* Style the form */
+#regForm {
+  background-color: #ffffff;
+  margin: 2rem auto;
+  width: 40rem;
+  height: 20rem;
+}
+
+/* Style the input fields */
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04aa6d;
+}
+
+
+
+
+/* scroll page 4 */
+.container{
+  position: relative;
+  width: 30rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  left:2rem;
+  top:1.5rem;
+}
+
+.container > #box{
+height: 300px;
+width: 400px;
+overflow: auto;
+position: relative;
+overscroll-behavior-block: contain;
+}
+.header {
+  position: absolute;
+  width: 25rem;
+  background-color: #f1f1f1;
+}
+.fix{
+  position: fixed;
+}
+.header h2 {
+  text-align: center;
+}
+
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #04AA6D;
+  width: 0%;
+}
+
+.content {
+  padding: 100px 0;
+  margin: 50px auto 0 auto;
+  width: 80%;
+}
+
+
+/* footer part */
+
+#left {
+  padding-right: 1rem;
+}
+#right {
+  padding-left: 1rem;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+/* cursor */
+.cursor{
+  z-index: 999;
+  position: fixed;
+  background: #2696E8;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 20px #2696E8,
+              0 0 60px #2696E8,
+              0 0 100px #2696E8;
+  animation: colors 5s infinite;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+@keyframes colors{
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+
+.cursor:before{
+  content: '';
+  position: absolute;
+  background: #2696E8;
+  width: 50px;
+  height: 50px;
+  opacity: 0.2;
+  transform: translate(-30%, -30%);
+  border-radius: 50%;
+}

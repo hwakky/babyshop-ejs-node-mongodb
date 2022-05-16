@@ -1,0 +1,233 @@
+body{
+  width: 100%;
+  height: 90rem;
+  background: rgba(113, 224, 228, 0.5);
+}
+.positionHeader{
+  width: 100%;
+  height: 2rem;
+  position: relative;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  display: block;
+}
+.positionSort{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin-top: 3rem;
+  margin-left: 83rem;
+  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.positionFilter{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-top: 3rem;
+  margin-left: 90rem;
+  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+select{
+  width: 5rem;
+  height: 2rem;
+}
+
+
+/* SPECIAL OFFERS */
+.sp-container{
+  width: 100%;
+  margin-top: 2rem;
+  
+}
+.sp-text{
+  margin-left: 10rem;
+}
+.sp-block{
+  width: 95%;
+  height:51rem;
+  background-color: rgba(134, 221, 224, 0.5);
+  margin: auto;
+  border: 0.2rem solid rgba(134, 221, 224, 0.8);
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 0.5rem;
+}
+.card{
+  width:25rem;
+  height: 18rem;
+  background-color: rgba(94, 123, 219,0.4);
+  margin: auto;
+  margin-top: 2rem;
+  border-width: 0.5rem;
+  border-style: dashed;
+  border-radius: 0.5rem;
+  border-color: white;
+  text-align: center;
+  padding-top: 2rem;
+}
+.image img{
+  max-width: 100%;
+}
+.showdetailS{
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  background-color: rgba(255, 255, 255,0.8);
+}
+.nameS{
+  float: left;
+  left: 1rem;
+  position: absolute;
+  font-size: 2rem
+}
+.discount{
+  animation: flicker 1.5s infinite alternate;
+  color: #fff;
+  font-size: 3rem;
+  position: relative;
+  float: right;
+  top:-13rem;
+  right: 2rem;
+  
+}
+@keyframes flicker {
+    
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px rgb(255, 81, 0),
+      0 0 80px rgb(255, 81, 0),
+      0 0 90px rgb(255, 81, 0),
+      0 0 100px rgb(255, 81, 0),
+      0 0 150px rgb(255, 81, 0);
+  
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+  }    
+}
+.strikethrough{
+  position: relative;
+  color: red;
+  font-size: 1rem;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 1px solid;
+  border-color: inherit;
+  
+  -webkit-transform:rotate(-5deg);
+  -moz-transform:rotate(-5deg);
+  -ms-transform:rotate(-5deg);
+  -o-transform:rotate(-5deg);
+  transform:rotate(-5deg);
+}
+.normalpriceS{
+  position: absolute;
+  float: right;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+}
+
+/* Image Magnifier Glass */
+.loupe {
+  display: none;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  box-shadow: 5px 5px 12px black;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: crosshair;
+  overflow: hidden;
+}
+
+.loupe img {
+  position: absolute;
+  right: 0;
+}
+
+/* page */
+
+.pagination {
+  display: inline-block;
+  position: relative;
+  left: 40%;
+  top:45%;
+}
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+.maintable{
+  border-top: 0.1rem rgb(214, 213, 213)  solid;
+  width: 100%;
+  height: 5rem;
+  background-color: white;
+  position: relative;
+  bottom: 0;
+  top:46rem
+}
+.foot{
+  font-size: 2rem;
+}
+.icon1{
+  position: relative;
+  left:9rem;
+}
+.icon2{
+  position: relative;
+  left:5rem;
+}
+.icon3{
+  position: relative;
+  left:7rem;
+}
+
+.index-image{
+  object-fit: cover;
+  width: 5rem;
+}
+

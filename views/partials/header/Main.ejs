@@ -62,7 +62,7 @@
             <span class="text__list" onclick="openNav()">All</span>
           </div>
           <a href="#" class="save__button">Saved</a>
-          <a href="/seller" class="sell__button">Sell</a>
+          <a href="/login" class="sell__button">Sell</a>
           <a href="/login" class="signup__button">sign in</a>
           <a href="/signup" class="signin__button">sign up</a>
 
@@ -76,15 +76,16 @@
             <span id="logotext">BABY SHOP</span>
             <!-- search bar -->
             <div class="container__searchbar container__searchbar--design">
-              <form action="/search" method="POST" class="d-flex">
-                <div class="icon">
-                  <i class='bx bx-search search'></i>
-                </div>
-                <div class="input">
-                  <input type="search" placeholder="Search" aria-label="Search" id="search">
+              <div class="icon">
+                <i class='bx bx-search search'></i>
+              </div>
+              <div class="input">
+                <form action='/search' method="post" class="d-flex">
+                  <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search">
                   <i class='bx bx-x clear'></i>
-                </div>
-              </form>
+                  <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+              </div>
             </div>
             <!-- 3 icon right -->
             <i class='bx bx-volume-mute icon__mute' id="icon-music"></i>
@@ -101,7 +102,7 @@
               <span class="text__list" onclick="openNav()">All</span>
             </div>
             <a href="#" class="save__button">Saved</a>
-            <a href="/seller" class="sell__button">Sell</a>
+            <a href="/sell" class="sell__button">Sell</a>
             <% if(typeof(currentUser.image)=='undefined' ) { %>
               <a href="/user/profile" class="signup__button2"><i class="fas fa-user me-3"></i>&nbsp;<%=
                   currentUser.username %></a>
@@ -140,7 +141,7 @@
               <a onclick="myFunction()"> <i class='bx bx-football'></i> Toys & Game</a>
               <a onclick="myFunction()"> <i class='bx bxs-book-bookmark'></i> Book</a>
               <a onclick="myFunction()"> <i class='bx bx-tv'></i> Electronics</a>
-              <a href="#">All</a>
+              <a href="/search">All</a>
             </div>
             <h2>Help & Setting</h2>
             <a href="/user/profile">Your Account</a>

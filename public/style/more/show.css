@@ -1,0 +1,156 @@
+body{
+    width: 100%;
+    height: 54rem;
+}
+
+.itemBox{
+    width: 80%;
+    height: 25rem;
+    background-color: rgba(277,277,277,0.5);
+    position: relative;
+    margin: auto;
+    top:2rem;
+    border: 0.2rem lightblue solid;
+    display: flex;
+    flex-direction: row;
+}
+/* left */
+.blockLeft{
+    position: relative;
+    width: 50%;
+    text-align: center;
+}
+.img-magnifier-container{
+    position:relative;
+}
+.img-magnifier-container img{
+    height: 15rem;
+}
+.img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+}
+
+/* right */
+.blockRight{
+    position: relative;
+    width: 50%;
+    align-items: center;
+    
+}
+.bxs-cart{
+    color: green;
+}
+.buyit{
+    float:right;
+    margin-right: 2rem;
+    margin-top:5rem;
+    padding: 0.5rem 1rem;
+    font-size:1.5rem;
+}
+
+
+
+/* comment part */
+.commentBox{
+    width: 90%;
+    height: 10rem;
+    background-color: rgba(129, 253, 212,0.5);
+    margin: auto;
+    position: relative;
+    top: 4rem;
+    padding: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.commentBox::-webkit-scrollbar {
+    display: none;
+}
+
+/* add comment */
+.buttonC{
+    margin-top: 5rem;
+    margin-left: 80rem;
+}
+.buttonCom {
+    background-color: #3DD1E7;
+    border: 0 solid #E5E7EB;
+    box-sizing: border-box;
+    color: #000000;
+    display: flex;
+    font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 15rem;
+    max-width: 460px;
+    position: relative;
+    cursor: pointer;
+    transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .buttonCom:focus {
+    outline: 0;
+  }
+  
+  .buttonCom:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+  }
+  
+  .buttonCom:hover:after {
+    bottom: 2px;
+    left: 2px;
+  }
+  
+  @media (min-width: 768px) {
+    .buttonCom {
+      padding: .75rem 3rem;
+      font-size: 1.25rem;
+    }
+  }
+
+
+
+
+
+
+/* footer */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+  }
+
+
+/* add on */
+.underline{
+    border-bottom:0.1rem solid black;
+}
+.left{
+    position: relative;
+    left: 2rem;
+}

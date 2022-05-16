@@ -7,53 +7,53 @@ const dataItem = [
         {   
             name: 'Blue Dog',
             image:'/picture/bluedog.png',
-            desc:'xxxxx',
-            price:'20000',
-            stock:'5',
-            category:'Smartphone',
-            sold:'200',
+            desc:'dog face at the chest clothes make with cotton',
+            price:'600',
+            stock:'20',
+            category:'clothe',
+            sold:'31',
             author : {
-                id : '60a23cdd13fdc43689eb8ded',
-                username : 'asd'
+                id : '627ca21ceba5b65d5dd41cd1',
+                username : 'baby-shop.co'
             }
         },
         {   
             name: 'Pink Rabbit',
             image:'/picture/pink.png',
-            desc:'xxxxx',
-            price:'15000',
-            stock:'5',
-            category:'Game',
-            sold:'100',
+            desc:'hood have rabbit ear',
+            price:'999',
+            stock:'2',
+            category:'clothe',
+            sold:'98',
             author : {
-                id : '60a23cdd13fdc43689eb8ded',
-                username : 'asd'
+                id : '627ca21ceba5b65d5dd41cd1',
+                username : 'baby-shop.co'
             }
         },
         {   
             name: 'Pink Mickymouse',
             image:'/picture/pinkmicky.png',
-            desc:'xxxxx',
-            price:'65000',
+            desc:'overalls micky mouse',
+            price:'699',
             stock:'5',
-            category:'Computer',
-            sold:'80',
+            category:'clothe',
+            sold:'12',
             author : {
-                id : '60a23cdd13fdc43689eb8ded',
-                username : 'asd'
+                id : '627ca21ceba5b65d5dd41cd1',
+                username : 'baby-shop.co'
             }
         },
         {   
             name: 'White-Black',
             image:'/picture/whiteback.png',
-            desc:'xxxxx',
-            price:'5000',
+            desc:'big black bow',
+            price:'200',
             stock:'5',
-            category:'Shoe',
-            sold:'50',
+            category:'clothe',
+            sold:'39',
             author : {
-                id : '60a23cdd13fdc43689eb8ded',
-                username : 'asd'
+                id : '627ca21ceba5b65d5dd41cd1',
+                username : 'baby-shop.co'
             }
         },
         {   
@@ -62,11 +62,11 @@ const dataItem = [
             desc:'xxxxx',
             price:'1500',
             stock:'5',
-            category:'Figure',
+            category:'clothe',
             sold:'20',
             author : {
-                id : '60a23cdd13fdc43689eb8ded',
-                username : 'asd'
+                id : '627ca21ceba5b65d5dd41cd1',
+                username : 'baby-shop.co'
             }
         }
 ];
