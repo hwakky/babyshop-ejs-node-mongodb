@@ -49,35 +49,20 @@
         </tr>
         <div class="sum">
           <form action='/user/transaction' method="post">
-            <div class=''>
-              <div class=''>
-                <h5>Subtotal<input type='hidden' name='subtotal' value='<%= subtotal %>'></h5>
-              </div>
-              <div class='col-5 text-end'>
-                <p>฿<%= subtotal %></p>
-              </div>
+            <div class="row">
+              <h3>total<input type='hidden' name='subtotal' value='<%= subtotal %>'></h3>
+              <p style="color:rgb(255, 0, 0); position: relative; right: -11.5rem;"><%= subtotal %>&nbsp;฿</p>
             </div>
-            <div class='row mb-3'>
-              <div class='col-7'>
-                <h5>Shipping fee<input type='hidden' name='fee' value="<%= fee %>"></h5>
-              </div>
-              <div class='col-5 text-end'>
-                <p>฿<%= fee %></p>
-              </div>
+            <div class="row">
+              <h3>fee<input type='hidden' name='fee' value="<%= fee %>"></h3>
+              <p style="color:rgb(255, 0, 0); position: relative; right: -12.2rem;">&nbsp;&nbsp;&nbsp;<%= fee %>&nbsp;฿</p>
             </div>
-            <hr class='mb-3'>
-            <div class='row'>
-              <div class='col-7'>
-                <h4>Total<input type='hidden' name='total' value='<%= total %>'></h4>
-              </div>
-              <div class='col-5 text-end'>
-                <h5>฿<%= total %></h5>
-              </div>
+            <div class="row">
+              <h3>Summary price<input type='hidden' name='total' value='<%= total %>'></h3>
+              <p style="color:rgb(255, 0, 0); position: relative; right: -5rem;">&nbsp;&nbsp;&nbsp;<%= total %>&nbsp;฿</p>
             </div>
-            <hr class='mt-1'>
-            <div class='row d-flex justify-content-center'>
-              <button id='proceed' class='btn-success' style="width: fit-content;">Proceed to check out</button>
-            </div>
+            
+            <button id='proceed' class='btnsubmit' style="width: fit-content;">Submit</button>
           </form>
         </div>
       </table>
