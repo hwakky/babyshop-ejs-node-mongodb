@@ -1,146 +1,56 @@
-<%- include('partials/header/Search.ejs') %>
+<%- include('partials/header/history.ejs') %>
+<div>
+  <div class="history">
+    <div class="underline">
+        <h1>PURCHASE HISTORY</h1>
+    </div>
+    <% if(transaction.length == 0){ %>
+      <div style="text-align: center; margin-top: 2rem;">
+        <h3>No purchase history</h3>
+      </div>
+    <% } else { %>
 
-  <div class="block">
-    <div class="row">
+
+
+
+
+
+  <div>
+    <% transaction.forEach((order) => { %>
+      <div class="slip">
+        <% var subtotal = 0,fee=100 %>
+        <div>
+            <h3>Transaction No. <%= order.id %></h3>
+        </div>
+    <% order.product.forEach((product) => { %>
       <div class="box">
-        <% if(searchCategory !='' ) { %>
-          <h1>All result for "<%= searchCategory %>" + "
-              <span id='word' name='word'>
-                <%= word %>
-              </span>"
-          </h1>
-          <% } else { %>
-            <h1>All result for "
-              <span id='word' name='word'>
-                <%= word %>
-              </span>"
-            </h1>
-            <% } %>
-      </div>
-      <div class="box sort">
-        <span>Sort by</span>
-        <select id='sort-by' onchange="sort()">
-          <option value='none'>None</option>
-          <option value='name'>Name</option>
-          <option value='price-low'>Price low to high</option>
-          <option value='price-high'>Price high to low</option>
-          <option value='rating'>Rating</option>
-        </select>
-      </div>
-      <div class="box filter">
-        <span>Filter</span>
-        
-        <input type="number" class="form-control" onkeyup="liveSearch()" id='min' name="min" placeholder="Min">
-        <input type="number" class="form-control" onkeyup="liveSearch()" id='max' name="max" placeholder="Max">
-      </div>
-      <div class='row'>
-        <div class='row col-12 mx-auto mt-3'>
-          <% category.forEach((type) => { %>
-            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-4 col-sm-6 col-6 my-2 px-1">
-                <a href='/category/<%= type.category %>' class="card shadow-sm text-center justify-contents-center" style="border-radius: 20px;;">
-                  <div class="category">
-                    <img src="<%= type.image %>" style="width:100%; height: 100px; border-radius: 20px;">
-                    <div class="bottom-left-search text-uppercase"><%= type.category %></div>
-                  </div>
-                </a>
+        <div class="row">
+          <div>
+            <img src='<%= product.image %>' class='card-img-top img'>
+          </div>
+          <div>
+          <h3><%= product.name %></h3>
+          <h5>฿<%= product.price %></h5>
+          <h5>x <%= product.quantity %></h5>
+          <h3>฿<%= product.price * product.quantity %></h3>
+          <span>Sell by : </span>
+              <% if(typeof(product.sellerImage) == 'undefined') { %>
+                  <i class="fas fa-user me-3"></i><%= product.sellerName %>
+              <% } else { %>
+                  <img src='<%= product.sellerImage %>' style='height: 50px; width: 50px; border-radius: 50%; object-fit:cover;'><%= product.serllerName %>
+              <% } %>
+              <% subtotal = subtotal + (product.quantity * product.price) %>
+              <% }); %>
+              <% total = subtotal + fee %>
+              <h5>Shipping fee : ฿<%= fee %></h5>
+              <h1>Total : ฿<%= total %></h1>
             </div>
-          <% }); %>
         </div>
       </div>
-    </div>
-
-    <div>
-      <div id='myUL' class="flex">
-        <% item.forEach((item)=> { %>
-          <% var avgRating; %>
-            <% if(item.comments.length==0){ %>
-              <% avgRating=0; %>
-                <% }else{var i=0,j=item.comments.length; %>
-                  <% item.comments.forEach(function(comment){ %>
-                    <% if(typeof(comment.rating)=='undefined' ) { %>
-                      <% j-- %>
-                        <% } else { %>
-                          <% i=i + comment.rating %>
-                            <% } %>
-                              <% }); %>
-                                <% avgRating=(i/j).toFixed(1) %>
-                                  <% } %>
-                                    <% if(isNaN(avgRating) || avgRating==0){ %>
-                                      <% avgRating=0 %>
-                                        <% } %>
-                                          <div class="search"data-none='<%= item.date%>' data-name='<%= item.name %>'
-                                            data-price='<%= item.price %>' data-rating='<%= avgRating %>'>
-                                            <div class="card">
-                                              <div class="spaceImg">
-                                                <img src='<%= item.image %>' class="imgC">
-                                                <% var txtRate; %>
-                                                  <% if(avgRating==0){ %>
-                                                    <% txtRate='No one rate this product' %>
-                                                      <% } else { %>
-                                                        <% txtRate=avgRating + ' / 5.0' %>
-                                                          <% } %>
-                                                            <div>
-                                                              <% if(!currentUser){ %>
-                                                                <form action='/user/favorite/add/<%= item.id %>' method='post'>
-                                                                  <button class='heart'><i class="far fa-heart"></i></button>
-                                                                </form>
-                                                                <% } else { %>
-                                                                  <% if((currentUser.favorite).includes(item.id)) {%>
-                                                                    <form action='/user/favorite/remove/<%= item.id %>' method='post'>
-                                                                      <button class='heart'><i class="fas fa-heart redH"></i></button>
-                                                                    </form>
-                                                                    <% } else { %>
-                                                                      <form action='/user/favorite/add/<%= item.id %>' method='post'>
-                                                                        <button class='heart'><i class="far fa-heart"></i></button>
-                                                                      </form>
-                                                                      <% } %>
-                                                                        <% } %>
-                                                                          <i class="fas fa-star" title='<%= txtRate %>'></i>
-                                                            </div>
-                                              </div>
-
-                                              <div class="detail">
-                                                <div class="flex"> 
-                                                  <h4><%= item.name %></h4>
-                                                  <span class="cate">&nbsp;(<%= item.category %>)</span>
-                                                </div>
-                                                <div class="flex">
-                                                  <span >Price : <%= item.price %> ฿</span>
-                                                </div>
-                                                <div class="flex">
-                                                  <p>Sold : <%= item.sold %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                  <span>By:</span>
-                                                    <a href='/seller/shop/<%= item.author.id%>' class="Right">
-                                                    <% if(typeof(item.author.image)=='undefined' ) { %>
-                                                      <i class='bx bxs-wink-smile' style="font-size: 1rem;"></i>
-                                                    <%= item.author.username %>
-                                                    <% } else { %>
-                                                    <img src='<%= item.author.image %>' style='height: 30px; width: 30px; border-radius: 50%; object-fit:cover;'>
-                                                    <%= item.author.username %>
-                                                    <% } %>
-                                                  </a>
-                                                </div>
-                                                <div class="flex Right">
-                                                  <div class="view">
-                                                    <a href='/show/<%= item._id%>'>View</a>
-                                                  </div>
-                                                  &nbsp;
-                                                  <div class="view">
-                                                    <form action="/cart/<%= item._id %>" method="post">
-                                                      <button type="submit" class="non">Add to cart</button>
-                                                    </form>
-                                                  </div>
-                                                  &nbsp;
-                                                  &nbsp;
-                                                  &nbsp;
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <% }); %>
-      </div>
-    </div>
   </div>
-
-
-  <%- include('partials/footer/Main.ejs') %>
+    <% }); %>
+</div>
+<% } %>
+</div>
+</div>
+<%- include('partials/footer/Main.ejs') %>
