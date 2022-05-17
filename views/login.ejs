@@ -1,49 +1,26 @@
-<%- include('partials/headerLogin.ejs') %>
-<main class="container my-5" style='margin-bottom: 15%;'>
-    <div class='row bg-white' style='border-radius: 15px;'>
-        <div class='col-xl-7 ms-0 ps-0'>
-          <img class='img-login'src='/picture/login.jpg' style='object-fit: cover; width:100%;'>
-        </div>
-        <div class='col-xl-5 my-auto text-start'>
-          <form action="/login" method="post">
-            <div class='box'>
-              <% if(error && error.length > 0) { %>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong><%= error %></strong>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <%}%>
-              <% if(success && success.length > 0) { %>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong><%= success %></strong>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              <%}%>
-            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
-            <div class="row">
-              <div class="col-1">
-                <i class="fas fa-user mt-3" style='font-size: 25px;'></i>
-              </div>
-              <div class="form-floating pb-3 col-11">
-                <input type="text" class="form-control"  name="username" placeholder="Username">
-                <label style='margin-left: 20px;'for="username">Username</label>
-            </div>
-            </div>
-            <div class="row">
-              <div class="col-1">
-                <i class="fas fa-lock mt-3" style='font-size: 24px;'></i>
-              </div>
-            <div class="form-floating pb-3 col-11">
-              <input type="password" class="form-control" name="password" placeholder="Password">
-              <label style='margin-left: 20px;' for="password">Password</label>
-            </div>
-            </div>
-              <button class="w-100 btn btn-lg btn-primary button mb-3" type="submit">Login</button>
-              <br>
-              <a href="/signup">Create your account</a>
-            </div>
-          </form>
-        </div>
-    </div>
-</main>
-<%- include('partials/footer.ejs') %>
+<%- include('partials/header/Login.ejs') %>
+<div class="text">
+  <h1>Welcome</h1>
+  <p>Sign in to ssaw or <a href="/signup">create an account</a></p>
+</div>
+<form class="form-box" action="/login" method="POST">
+
+  <div class="input-box space">
+      <input type="text" id="fname" name="username" placeholder="Email">
+  </div>
+  
+  <div class="input-box">
+      <input type="password" id="password" name="password" placeholder="Password">
+      <span class="eye" onclick="myFunction()">
+          <i id="hide1" class ="fa fa-eye"></i>
+          <i id="hide2" class ="fa fa-eye-slash"></i>
+      </span>
+  </div>
+
+  <div class="btn">
+      <button class="login-btn" type="submit" value="Submit">Sign in</button>
+  </div>
+
+  <a href="/forgotpassword" class="right forgot">forgot password ?</a>
+</form>
+<%- include('partials/footer/Main2.ejs') %>

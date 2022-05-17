@@ -11,6 +11,27 @@ body {
   display: flex;
   flex-direction: column;
 }
+.logo-block{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logo{
+  width: 4rem;
+  padding: 0 1rem;
+}
+#logo{
+  font-size: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
 h1 {
   font-size: 5rem;
 }

@@ -21,6 +21,8 @@
   <script src="/js/Search.js" defer></script>
   <script src="/js/header/Main.js" defer></script>
 
+
+
     
 </head>
 <body>
@@ -40,13 +42,12 @@
         </div>
         <div class="input">
           <form action='/search' method="post" class="d-flex">
-            <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search">
+            <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search"onkeyup="liveSearch()">
             <i class='bx bx-x clear'></i>
             <button class="btn btn-outline-warning" type="submit">Search</button>
           </form>
         </div>
       </div>
-
     <!-- 3 icon right -->
     <i class='bx bx-volume-mute icon__mute' id="icon-music"></i>
     <i class='bx bxs-bell icon__noti'></i>
@@ -81,7 +82,7 @@
           </div>
           <div class="input">
             <form action='/search' method="post" class="d-flex">
-              <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search">
+              <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="myInput" onkeyup="liveSearch()">
               <i class='bx bx-x clear'></i>
               <button class="btn btn-outline-warning" type="submit">Search</button>
             </form>

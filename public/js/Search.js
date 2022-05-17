@@ -1,5 +1,4 @@
 function liveSearch() {
-  // Declare variables
   var input, filter, ul, li, a, i, txtValue,bValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
@@ -10,7 +9,6 @@ function liveSearch() {
 
   word.innerText = input.value; 
   word.value = input.value;
-  // Loop through all list items, and hide those who don't match the search query
   min = document.getElementById('min').value;
   max = document.getElementById('max').value;
   if(min != '' && max == ''){
