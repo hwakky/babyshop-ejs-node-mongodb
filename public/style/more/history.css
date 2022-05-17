@@ -1,0 +1,69 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+::-webkit-scrollbar { 
+    display: none;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Permanent Marker", cursive;
+}
+body{
+  width: 100%;
+  height: 60.5rem;
+  background: linear-gradient(rgba(113, 224, 228, 0.5), rgba(255, 255, 255, 1));
+}
+.logo-block{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logo{
+  width: 4rem;
+  padding: 0 1rem;
+}
+#logo{
+  font-size: 1.5rem;
+}
+.underline{
+    border-bottom: 0.1rem solid gray;
+}
+.history{
+    width: 70%;
+    height: 36rem;
+    background-color: rgba(277,277,277,0.7);
+    margin: auto;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.slip{
+    
+    background-color: rgb(181, 250, 229);
+    margin:1rem 2rem;
+    padding: 1rem 2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.img{
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.info{
+    margin: 1rem 2rem;
+    width: 30rem;
+}
