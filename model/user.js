@@ -25,7 +25,11 @@ const UserSchema = new mongoose.Schema({
         }
     ],
     fullname : String,
-    address : String,
+    addressLine : String,
+    city : String,
+    state : String,
+    zipcode : String,
+    country : String,
     image : String,
     phone : String,
     admin : {type : Boolean, default : false},

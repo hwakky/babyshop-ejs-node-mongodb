@@ -122,8 +122,15 @@ router.get("/signup", (req, res) => {
 
 router.post("/signup", function (req, res) {
   var newUser = new User({
-    username: req.body.username,
+    fullname: req.body.fullname,
     email: req.body.email,
+    username: req.body.username,
+    fav: req.body.fav,
+    addressLine: req.body.addressLine,
+    city: req.body.city,
+    state: req.body.state,
+    zipcode: req.body.zipcode,
+    country: req.body.country,
   });
   if (req.body.code === "admin") {
     newUser.admin = true;

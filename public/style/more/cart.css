@@ -12,7 +12,7 @@ header {
 }
 body {
   width: 100%;
-  height: 59.5rem;
+  height: 60.5rem;
   background: linear-gradient(rgba(113, 224, 228, 0.5), rgba(255, 255, 255, 1));
 }
 a {
@@ -744,7 +744,17 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
 }
-
+::-webkit-scrollbar { 
+  display: none; 
+}
+.cbox{
+  width: 80%;
+  height: 28rem;
+  overflow-y: scroll;
+  overflow-x: none;
+  display: flex;
+  flex-direction: row;
+}
 .space{
   width: 80%;
   height: 30rem;
@@ -753,10 +763,19 @@ input[type="search"]::-webkit-search-results-decoration {
   background-color: rgba(277,277,277,0.7);
   padding: 1rem 2rem;
 }
+.sum{
+  width: 20rem;
+  height: 8rem;
+  background-color:rgba(113, 224, 228,0.5);
+  border-radius: 1rem;
+  position: relative;
+  float: right;
+  padding: 2rem 1rem;
+  margin-top: -26rem;
+}
 
 .table{
-  overflow-y: scroll;
-  overflow-x: none;
+
 }
 .th{
   margin: 0rem 5rem;
@@ -795,15 +814,6 @@ input[type="search"]::-webkit-search-results-decoration {
   border:none;
   font-size: 2rem;
   margin-top: -0.5rem;
-}
-.sum{
-  width: 20rem;
-  height: 8rem;
-  background-color:rgba(113, 224, 228,0.5);
-  border-radius: 1rem;
-  float: right;
-  padding: 2rem 1rem;
-  margin-top: 1rem;
 }
 .row{
   display: flex;

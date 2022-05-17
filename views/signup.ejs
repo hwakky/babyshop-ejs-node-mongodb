@@ -1,57 +1,93 @@
-<%- include('partials/headerLogin.ejs') %>
-<main class="container my-5" style='margin-bottom: 15%;'>
-  <div class='row bg-white' style='border-radius: 15px;'>
-    <div class='col-xl-7 ms-0 ps-0'>
-      <img class='img-login'src='/picture/login.jpg' style='object-fit: cover; width:100%;'>
-    </div>
-    <div class='col-xl-5 my-auto text-start'>
-      <form action="/signup" method="post">
+<%- include('partials/header/Signup.ejs') %>
+
+      <!-- <form action="/signup" method="post">
         <div class="box">
-          <% if(error && error.length > 0) { %>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong><%= error %></strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          <%}%>
-          <% if(success && success.length > 0) { %>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong><%= success %></strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          <%}%>
-        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
-          <div class="row">
-            <div class="col-1 gap-2">
-              <i class="fas fa-user mt-3" style='font-size: 25px;'></i>
-            </div>
-            <div class="form-floating pb-3 col-11">
+        
               <input type="text" class="form-control"  name="username" placeholder="Username" required>
               <label style='margin-left: 20px;'for="username">Username</label>
-          </div>
-          </div>
-          <div class="row">
-            <div class="col-1 gap-2">
-              <i class="fas fa-envelope mt-3" style='font-size: 23px;'></i>
-            </div>
-          <div class="form-floating pb-3 col-11">
+          
             <input type="email" class="form-control" name="email" placeholder="Email" required>
             <label style='margin-left: 20px;' for="email">Email</label>
-          </div>
-          </div>
-          <div class="row">
-            <div class="col-1 gap-2">
-              <i class="fas fa-lock mt-3" style='font-size: 23px;'></i>
-            </div>
-            <div class="form-floating pb-3 col-11">
+         
               <input type="password" class="form-control" name="password" placeholder="Password" required>
               <label style='margin-left: 20px;' for="password">Password</label>
-            </div>
-          </div>
+           
         <button class="w-100 btn btn-lg btn-primary button mb-3" type="submit">Sign up</button>
         <a href="/login">Already have an account?</a>
+      
+      </form> -->
+
+
+
+      <form id="regForm"action="/signup" method="POST">
+
+
+        <div class="text">
+            <h1 id="regis">Register</h1>
         </div>
-      </form>
-    </div>
-</div>
-</main>
-<%- include('partials/footer.ejs') %>
+        
+        <div class="tab">Name:
+            <p><input name="fullname" type="text" placeholder="Full name" oninput="this.className = ''"></p>
+            <p><input name="email" type="email" placeholder="Email" oninput="this.className = ''" ></p>
+            <p><input name="username" type="text" placeholder="Username" oninput="this.className = ''"></p>
+            <p><input name="password" type="password" placeholder="Password" oninput="this.className = ''"></p>
+            <p>What is your fav color?</p>
+            <p><input name="fav" type="text" placeholder="when forgot password" oninput="this.className = ''"></p>
+        </div>
+
+
+        <div class="tab">Contact Info:
+            <p><input name="addressLine" placeholder="Address lines" oninput="this.className = ''"></p>
+            <p><input name="city" placeholder="City" oninput="this.className = ''"></p>
+            <p><input name="state" placeholder="State" oninput="this.className = ''"></p>
+            <p><input name="zipcode" placeholder="Zip code" oninput="this.className = ''"></p>
+            <p><input name="country" placeholder="Country" oninput="this.className = ''"></p>
+        </div>
+
+    <div class="tab">
+        <div class="container">
+            <div id="box" class="box">
+              <section class="header fix">
+                <h3>By continuing, you agree to Amazon's Conditions 
+                    of Use and Privacy Notice.</h3>
+                <div class="progress-container">
+                  <div class="progress-bar" id="myBar"></div>
+                </div>
+              </section>
+                <br><br>
+                <h3>Scroll Down to See The Effect</h3>
+                <p>We have created a "progress bar" to <b>show how far a page has been scrolled</b>.</p>
+                <p>It also <b>works when you scroll back up</b>.</p>
+                <p>It is even <b>responsive</b>! Resize the browser window to see the effect.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+            </div>
+          </div>
+      </div>
+
+
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="submit" value="Submit">Sign in</button>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+        
+    </form>
+    <p id="finish">
+    </p>
+<%- include('partials/footer/Main2.ejs') %>

@@ -8,7 +8,7 @@
       <h2>No item in cart</h2>
     </div>
   <% } else { %>
-    <div>
+    <div class="cbox">
       <table class="table">
         <tr class="tr">
           <th class="th">Product name</th>
@@ -47,26 +47,25 @@
           <% }); %>
           <% total = subtotal + fee %>
         </tr>
-        <div class="sum">
-          <form action='/user/transaction' method="post">
-            <div class="row">
-              <h3>total<input type='hidden' name='subtotal' value='<%= subtotal %>'></h3>
-              <p style="color:rgb(255, 0, 0); position: relative; right: -11.5rem;"><%= subtotal %>&nbsp;฿</p>
-            </div>
-            <div class="row">
-              <h3>fee<input type='hidden' name='fee' value="<%= fee %>"></h3>
-              <p style="color:rgb(255, 0, 0); position: relative; right: -12.2rem;">&nbsp;&nbsp;&nbsp;<%= fee %>&nbsp;฿</p>
-            </div>
-            <div class="row">
-              <h3>Summary price<input type='hidden' name='total' value='<%= total %>'></h3>
-              <p style="color:rgb(255, 0, 0); position: relative; right: -5rem;">&nbsp;&nbsp;&nbsp;<%= total %>&nbsp;฿</p>
-            </div>
-            
-            <button id='proceed' class='btnsubmit' style="width: fit-content;">Submit</button>
-          </form>
-        </div>
       </table>
-  
+    </div>
+    <div class="sum">
+      <form action='/user/transaction' method="post">
+        <div class="row">
+          <h3>total<input type='hidden' name='subtotal' value='<%= subtotal %>'></h3>
+          <p style="color:rgb(255, 0, 0); position: relative; right: -11.5rem;"><%= subtotal %>&nbsp;฿</p>
+        </div>
+        <div class="row">
+          <h3>fee<input type='hidden' name='fee' value="<%= fee %>"></h3>
+          <p style="color:rgb(255, 0, 0); position: relative; right: -12.2rem;">&nbsp;&nbsp;&nbsp;<%= fee %>&nbsp;฿</p>
+        </div>
+        <div class="row">
+          <h3>Summary price<input type='hidden' name='total' value='<%= total %>'></h3>
+          <p style="color:rgb(255, 0, 0); position: relative; right: -5rem;">&nbsp;&nbsp;&nbsp;<%= total %>&nbsp;฿</p>
+        </div>
+        
+        <button id='proceed' class='btnsubmit' style="width: fit-content;">Submit</button>
+      </form>
     </div>
 
       <% } %>
