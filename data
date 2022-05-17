@@ -1,0 +1,38 @@
+flash
+
+<% if(error && error.length>0){ %>
+  <div class='alert alert-danger' style="z-index: 2; font-size: 2rem; align-items: center;" role='alert'>
+    <%= error %>
+      <button class='flashx' onClick="window.location.reload();"><i class='bx bx-x'></i></button>
+  </div>
+  <% } %>
+    <% if(success && success.length>0){ %>
+      <div class='alert alert-success' style="z-index: 2; font-size: 2rem; align-items: center;" role='alert'>
+        <%= success %>
+          <button class='flashx' onClick="window.location.reload();"><i class='bx bx-x'></i></button>
+      </div>
+      <% } %>
+
+<!-- css    -->
+/* alert */
+.alert{
+  width: 100%;
+  z-index: 2;
+  font-size: 2rem;
+  position: fixed;
+}
+.alert-danger{
+  background-color: rgb(255, 137, 137);
+  color: rgb(255, 0, 0);
+}
+.alert-success{
+  background-color: rgb(213, 255, 179);
+  color: rgb(0, 255, 21);
+}
+
+.flashx{
+  border: none;
+  background-color:none;
+  float: right;
+  font-size: 1rem;
+}

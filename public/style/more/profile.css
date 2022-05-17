@@ -1,0 +1,172 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Permanent Marker", cursive;
+}
+body{
+  width: 100%;
+  height: 60.5rem;
+  background: linear-gradient(rgba(113, 224, 228, 0.5), rgba(255, 255, 255, 1));
+}
+.logo-block{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logo{
+  width: 4rem;
+  padding: 0 1rem;
+}
+#logo{
+  font-size: 1.5rem;
+}
+.profile{
+  width: 70%;
+  height: 36rem;
+  background-color: rgba(277,277,277,0.7);
+  margin: auto;
+  position: relative;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+.underline{
+  border-bottom: 0.1rem solid gray;
+}
+.detail{
+  margin-top: 2rem;
+}
+/* image */
+.img{
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+  background-color: rgb(175, 255, 246);
+}
+
+.info{
+  display: block;
+  background-color: white;
+  width: 60rem;
+  height: 15rem;
+  margin: auto;
+  padding: 1rem;
+  border-bottom: 0.1rem gray solid;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+input{
+  border: none;
+  border-bottom: 0.1rem solid black;
+  background-color: transparent;
+}
+::placeholder{
+  color:red;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+}
+.row2{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+.back{
+  color:white;
+  padding: 0.25rem 0.3rem;
+  background-color: red;
+}
+.continune{
+  background-color: blue;
+  border: none;
+  padding: 0.3rem 0.35rem;
+  color:white;
+}
+.button{
+  margin-top: 3rem;
+  margin-left: 50rem;
+}
+.warp{  
+  color:white;
+  padding: 0.25rem 0.3rem;
+  background-color: rgba(0, 255, 200, 0.795);
+}
+.warp2{  
+  color:white;
+  padding: 0.25rem 0.3rem;
+  background-color: rgb(0, 195, 255);
+}
+
+
+
+
+
+
+/* alert */
+.alert{
+  width: 100%;
+  z-index: 2;
+  font-size: 2rem;
+  position: fixed;
+}
+.alert-danger{
+  background-color: rgb(255, 137, 137);
+  color: rgb(255, 0, 0);
+}
+.alert-success{
+  background-color: rgb(213, 255, 179);
+  color: rgb(0, 255, 21);
+}
+
+.flashx{
+  border: none;
+  background-color:none;
+  float: right;
+  font-size: 1rem;
+}
+
+/* footer */
+.maintable{
+  border-top: 0.1rem rgb(214, 213, 213)  solid;
+  width: 100%;
+  height: 5rem;
+  background-color: white;
+  position: relative;
+  margin-top: 3rem;
+  bottom: 0;
+  z-index: -1;
+}
+.foot{
+  font-size: 2rem;
+}
+.icon1{
+  position: relative;
+  left:9rem;
+}
+.icon2{
+  position: relative;
+  left:5rem;
+}
+.icon3{
+  position: relative;
+  left:7rem;
+}
+
+.index-image{
+  object-fit: cover;
+  width: 5rem;
+}

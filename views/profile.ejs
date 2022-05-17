@@ -1,28 +1,97 @@
-<%- include('partials/headerNavbarInput.ejs') %>
-<script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
-    }
-  };
-</script>
-<div class='p-3 mb-5'>
-  <div class='container'>
-    <% if(error && error.length > 0) { %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert" style='position:absolute;'>
-        <strong><%= error %></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<%- include('partials/header/profile.ejs') %>
+
+<div class="profile">
+  <h1 class="underline">Profile</h1>
+  <div class="detail">
+    <div style="margin-left: 18rem;">
+      <a class='warp' href="/user/history">History</a>
+      <a class='warp2' href="/user/favorite">Favorite</a>
+    </div>
+    <form action="/user/profile" method="post" enctype="multipart/form-data">
+      <div class="row">
+        <div class="column">
+          <% if(typeof(currentUser.image) == 'undefined') { %>
+          <img src='/picture/main/people.png' id='output' class="img">
+          <% } else { %>
+          <img src='<%= user.image %>' id='output' class="img">
+          <% } %>
+          <div class='fileUpload'>
+            <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
+            <label for="file"><span>Upload Image</span></label>
+          </div>
+        </div>
+
+        
+        <div class="column info">
+          <!-- name + phone -->
+          <h3>Information</h3>
+          <div class="row2">
+            <div  class="row">
+              <label class="form-label">Fullname:</label>
+              <input type="text" class="form-control" name="user[fullname]" placeholder="Firstname Lastname" value='<%= user.fullname%>'>
+            </div>
+            <div  class="row">
+              <label class="form-label">Phone:</label>
+              <input type="number" class="form-control" name="user[phone]" placeholder="Phone number" value='<%= user.phone%>'>
+            </div>
+            <div  class="row">
+              <label class="form-label">Email:</label>
+              <input type="text" class="form-control" name="user[email]" placeholder="Email" value='<%= user.email%>'>
+          </div>
+          </div>
+          <!-- email + name -->
+          <br>
+          <div class="column">
+            <h3>Address</h3>
+            <div class="row">
+              <div>
+                <label class="form-label">Address Line:</label>
+                <input type="text" class="form-control" name="user[addressLine]" placeholder="Address Line" value='<%= user.addressLine%>'>
+              </div>
+              <div>
+                <label class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City:</label>
+                <input type="text" class="form-control" name="user[city]" placeholder="City" value='<%= user.city%>'>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State:</label>
+                <input type="text" class="form-control" name="user[state]" placeholder="State" value='<%= user.state%>'>
+              </div>
+              <div>
+                <label class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;Zip Code:</label>
+                <input type="text" class="form-control" name="user[zipcode]" placeholder="Zip Code" value='<%= user.zipcode%>'>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country:</label>
+                <input type="text" class="form-control" name="user[country]" placeholder="Country" value='<%= user.country%>'>
+              </div>
+            </div>
+
+          </div>
+          <div class="button">
+            <a class='back' href="/">Go back</a>
+            <button type="submit" class="continune">Submit</button>
+          </div>
+        </div>
       </div>
-    <%}%>
-    <% if(success && success.length > 0) { %>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong><%= success %></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <%}%>
+  </form>
   </div>
+</div>
+
+
+
+
+
+
+
+
+<%- include('partials/footer/Main.ejs') %>
+
+
+<!-- <div class='p-3 mb-5'>
   <div class='container pt-3 pb-2 bg-white rounded-3'>
     <div class='mx-3'>
       <h1>MY PROFILE</h1>
@@ -72,5 +141,4 @@
         </div>
     </form>
   </div>
-</div>
-<%- include('partials/footer.ejs') %>
+</div> -->
