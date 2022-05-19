@@ -455,3 +455,7 @@ a {
   border: 0.1rem solid grey;
   z-index: 2;
 }
+.badd{
+  border: 0.1rem solid black;
+  background-color: rgba(113, 224, 228, 0.5);
+} 

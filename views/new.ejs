@@ -1,62 +1,61 @@
-<%- include('partials/headerNavbarInput.ejs') %>
-<script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
-    }
-  };
-</script>
-<div class='p-3 mb-5'>
-  <div class='container pt-3 pb-2 bg-white rounded-3'>
-    <div class='mx-3'>
-      <h1>Add New Product</h1>
-      <hr>
-    </div>
-    <form action="/seller" method="post" enctype="multipart/form-data">
-        <div class="container row py-4">
-          <div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center mt-3 mb-2'>
-            <img src='/picture/addphoto.png' id='output' style='height: 300px; width: 250px; object-fit: cover;'>
-            <div class='fileUpload'>
-              <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*" required>
-              <label for="file" class="btn-3">
-                <span>Upload Image</span>
-              </label>
-            </div>
-          </div>
-          <div class='col-xl-8 col-lg-8 col-md-6 col-sm-12'>
-            <div class='row'>
-              <div class="mb-3 col-lg-6 col-md-12">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="item[name]" required>
-              </div>
-              <div class="mb-3 col-lg-6 col-md-12">
-                <label class="form-label">Category</label>
-                <input type="text" class="form-control" name="item[category]" required>
-              </div>
-            </div>
-            <div class='row'>
-              <div class="mb-3 col-lg-6 col-md-12">
-                  <label class="form-label">Price</label>
-                  <input type="number" class="form-control remove-arrow" name="item[price]" required>
-              </div>
-              <div class="mb-3 col-lg-6 col-md-12">
-                <label class="form-label">Stock</label>
-                <input type="number" class="form-control remove-arrow" name="item[stock]" required>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Description</label>
-              <textarea type="text" class="form-control" style='height: 175px;' name="item[desc]" required></textarea>
-            </div>
-            <div class='text-end pt-3'>
-              <a class='btn btn-danger' href="/seller">cancel</a>
-              <button type="submit" class="btn btn-primary">Add</button>
-            </div>
-          </div>
-        </div>
-    </form>
+<%- include('partials/header/world.ejs') %>
+
+<div class="block">
+  <div class="underline">
+    <h1>Add New Product</h1>
   </div>
+  <form action="/seller" method="post" enctype="multipart/form-data">
+  <div class="row">
+    <div style="margin-left: 5rem;">
+    <img src='/picture/main/box.png' id='output' style='height: 300px; width: 250px; object-fit:contain;'>
+    <div class='fileUpload' style="float:left; top:28rem; left:21rem; position:absolute;">
+      <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*" required>
+      <label for="file" class="btn-3">
+        <span>Upload Image</span>
+      </label>
+    </div>
+    </div>
+    <div style="padding:3rem 0 0 2rem;">
+      <div class="row"> 
+        <div>
+          <label >Name</label>
+          <input type="text" class="form-control" name="item[name]" required>
+        </div>
+        <div>
+          <label class=" ">Category</label>
+          <input type="text" class="form-control" name="item[category]" required>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label >Price</label>
+          <input type="number" class="form-control remove-arrow" name="item[price]" required>
+        </div>
+        <div>
+          <label >Stock</label>
+          <input type="number" class="form-control remove-arrow" name="item[stock]" required>
+        </div>
+      </div>
+      <!-- <div>
+        <label class=" ">Category</label>
+        <input type="text" class="form-control remove-arrow" name="item[category]" required>
+      </div> -->
+      <div>
+        <label class=" ">Description</label>
+        <textarea type="text" class="form-control" style="position: relative;top: 1.5rem;" name="item[desc]" required></textarea>
+      </div>
+      <div style="float: right;">
+        <a style="color: red;" href="/seller">cancel</a>
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+  </form>
+
 </div>
-<%- include('partials/footer.ejs') %>
+
+
+
+
+
+<%- include('partials/footer/Main2.ejs') %>
