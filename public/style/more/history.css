@@ -63,11 +63,17 @@ body{
     display: flex;
     flex-direction: row;
 }
+.column{
+  display: flex;
+  flex-direction: column;
+}
 .info{
     margin: 1rem 2rem;
     width: 30rem;
 }
+.data{
 
+}
 
 
 #left {
@@ -85,4 +91,5 @@ body{
     color: black;
     text-align: center;
   }
+  
   

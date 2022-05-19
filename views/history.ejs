@@ -18,21 +18,25 @@
             <h3>Transaction No. <%= order.id %></h3>
         </div>
     <% order.product.forEach((product) => { %>
+
       <div class="row">
-        <div class="info">
+        <div class="column">
+        <div class="info row">
           <div>
             <img src='<%= product.image %>' class='card-img-top img'>
           </div>
+          <div class="data column">
           <h3><%= product.name %></h3>
-          <h5>฿<%= product.price %></h5>
-          <h5>x <%= product.quantity %></h5>
-          <h3>฿<%= product.price * product.quantity %></h3>
+          <h5>product price :<%= product.price %>฿</h5>
+          <h5>amount : x <%= product.quantity %></h5>
+          <h5>sum :<%= product.price * product.quantity %></h5>
           <span>Sell by : </span>
               <% if(typeof(product.sellerImage) == 'undefined') { %>
                   <i class="fas fa-user me-3"></i><%= product.sellerName %>
               <% } else { %>
                   <img src='<%= product.sellerImage %>' style='height: 50px; width: 50px; border-radius: 50%; object-fit:cover;'><%= product.serllerName %>
               <% } %>
+          </div>
         </div>
         <% subtotal = subtotal + (product.quantity * product.price) %>
         <% }); %>
@@ -43,11 +47,12 @@
           <h1>Total : ฿<%= total %></h1>
         </div>
       </div>
+      </div>
   </div>
     <% }); %>
 </div>
 <% } %>
 </div>
 </div>
-<%- include('partials/footer/Main.ejs') %>
+<%- include('partials/footer/Main2.ejs') %>
 

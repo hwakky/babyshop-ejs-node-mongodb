@@ -827,3 +827,19 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 2rem;
   margin-top: 1rem;
 }
+
+#left {
+  padding-right: 1rem;
+}
+#right {
+  padding-left: 1rem;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}

@@ -29,7 +29,7 @@
               <div class='row col-12 mb-3'>
                   <div class="col-12">
                       <label class="form-label">Address</label>
-                      <input type="text" class="form-control" name="address" placeholder="Address" value='<%= user.address%>' required>
+                      <input type="text" class="form-control" name="address" placeholder="Address" value='<%= user.addressLine+user.city+user.state+user.zipcode+user.country%>' required>
                   </div>
               </div>
         </div>

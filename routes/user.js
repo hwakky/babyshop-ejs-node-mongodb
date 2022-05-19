@@ -1,5 +1,4 @@
 var express = require('express');
-const { nextTick } = require('process');
 const   Item = require('../model/itemall');
         router = express.Router();
         User = require('../model/user');

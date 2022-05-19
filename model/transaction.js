@@ -9,7 +9,12 @@ var transactionSchema = new mongoose.Schema({
             ref: 'User'
         },
         fullname : String,
-        address : String,
+        address: String,
+        addressLine : String,
+        city : String,
+        state : String,
+        zipcode : String,
+        country : String,
         phone : String
     },
     product :[
