@@ -359,6 +359,21 @@ a {
   color: black;
   text-align: center;
 }
+/* alert */
+.alert{
+  width: 100%;
+  z-index: 2;
+  font-size: 2rem;
+  position: fixed;
+}
+.alert-danger{
+  background-color: rgb(255, 137, 137);
+  color: rgb(255, 0, 0);
+}
+.alert-success{
+  background-color: rgb(213, 255, 179);
+  color: rgb(0, 255, 21);
+}
 
 ::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */

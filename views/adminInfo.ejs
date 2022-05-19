@@ -21,7 +21,7 @@
       <div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center mt-0 mb-5'>
         <img src='<%= user.image %>' id='output' style='height: 200px; width: 200px; object-fit: cover; border-radius: 50%;'>
         <div class='fileUpload'>
-          <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
+          <input type="file" class="  upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
           <label for="file" class="btn-3">
             <span>Upload Image</span>
           </label>
@@ -31,22 +31,22 @@
         <div class='row'>
           <div class="mb-3 col-lg-6 col-md-12">
             <label class=" ">Fullname</label>
-            <input type="text" class="form-control" name="user[fullname]" placeholder="Firstname Lastname" value='<%= user.fullname%>'>
+            <input type="text" class=" " name="user[fullname]" placeholder="Firstname Lastname" value='<%= user.fullname%>'>
           </div>
           <div class="mb-3 col-lg-6 col-md-12">
             <label class=" ">Phone</label>
-            <input type="number" class="form-control" name="user[phone]" placeholder="Phone number" value='<%= user.phone%>'>
+            <input type="number" class=" " name="user[phone]" placeholder="Phone number" value='<%= user.phone%>'>
           </div>
         </div>
         <div class='row'>
           <div class="mb-3 col-lg-6 col-md-12">
               <label class=" ">Email</label>
-              <input type="text" class="form-control" name="user[email]" placeholder="Email" value='<%= user.email%>'>
+              <input type="text" class=" " name="user[email]" placeholder="Email" value='<%= user.email%>'>
           </div>
         </div>
         <div class="mb-3">
           <label class=" ">Address</label>
-          <input type="text" class="form-control" name="user[address]" placeholder="Address" value='<%= user.address%>'>
+          <input type="text" class=" " name="user[address]" placeholder="Address" value='<%= user.address%>'>
         </div>
         <div class='text-end pt-3'>
           <a class='btn btn-danger' href="/admin/user">Go back</a>

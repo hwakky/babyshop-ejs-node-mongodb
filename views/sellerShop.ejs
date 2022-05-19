@@ -32,7 +32,7 @@
                     </h1>
                 </div>
                 <div class='col-6 d-flex justify-content-end'>
-                    <input class="form-control" size='50%' type="search" placeholder="Search for product name" aria-label="Search" id='myInput' onkeyup="liveSearch()">
+                    <input class=" " size='50%' type="search" placeholder="Search for product name" aria-label="Search" id='myInput' onkeyup="liveSearch()">
                 </div>
             </div>
             <hr>
@@ -68,7 +68,7 @@
                                 <img src='<%= item.image %>' height="300px" width="100%" class='card-img-top' style="object-fit: cover; border-radius: 12px;">
                                 <% var txtRate; %>
                                 <% if(avgRating == 0){ %>
-                                  <% txtRate='No one rate this product' %>
+                                  <% txtRate=' No rate in this product' %>
                                   <% } else { %>
                                   <% txtRate = avgRating + ' / 5.0' %>
                                   <% } %>

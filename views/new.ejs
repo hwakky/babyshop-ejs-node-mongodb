@@ -9,7 +9,7 @@
     <div style="margin-left: 5rem;">
     <img src='/picture/main/box.png' id='output' style='height: 300px; width: 250px; object-fit:contain;'>
     <div class='fileUpload' style="float:left; top:28rem; left:21rem; position:absolute;">
-      <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*" required>
+      <input type="file" class="  upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*" required>
       <label for="file" class="btn-3">
         <span>Upload Image</span>
       </label>
@@ -18,31 +18,27 @@
     <div style="padding:3rem 0 0 2rem;">
       <div class="row"> 
         <div>
-          <label >Name</label>
-          <input type="text" class="form-control" name="item[name]" required>
+          <label>Name</label>
+          <input type="text" name="item[name]" required>
         </div>
         <div>
-          <label class=" ">Category</label>
-          <input type="text" class="form-control" name="item[category]" required>
+          <label>Category</label>
+          <input type="text" name="item[category]" required>
         </div>
       </div>
       <div class="row">
         <div>
-          <label >Price</label>
-          <input type="number" class="form-control remove-arrow" name="item[price]" required>
+          <label>Price</label>
+          <input type="number" name="item[price]" required>
         </div>
         <div>
-          <label >Stock</label>
-          <input type="number" class="form-control remove-arrow" name="item[stock]" required>
+          <label>Stock</label>
+          <input type="number" name="item[stock]" required>
         </div>
       </div>
-      <!-- <div>
-        <label class=" ">Category</label>
-        <input type="text" class="form-control remove-arrow" name="item[category]" required>
-      </div> -->
       <div>
-        <label class=" ">Description</label>
-        <textarea type="text" class="form-control" style="position: relative;top: 1.5rem;" name="item[desc]" required></textarea>
+        <label>Description</label>
+        <textarea type="text" style="position: relative;top: 1.5rem;" name="item[desc]" required></textarea>
       </div>
       <div style="float: right;">
         <a style="color: red;" href="/seller">cancel</a>

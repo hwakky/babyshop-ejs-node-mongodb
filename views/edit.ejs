@@ -19,7 +19,7 @@
           <div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center mt-3 mb-2'>
             <img src='<%= item.image %>' id='output' style='height: 300px; width: 250px; object-fit: cover;'>
             <div class='fileUpload'>
-              <input type="file" class="form-control upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
+              <input type="file" class="  upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
               <label for="file" class="btn-3">
                 <span>Upload Image</span>
               </label>
@@ -29,26 +29,26 @@
             <div class='row'>
               <div class="mb-3 col-lg-6 col-md-12">
                 <label class=" ">Name</label>
-                <input type="text" class="form-control" name="item[name]" value='<%=item.name%>' required>
+                <input type="text" class=" " name="item[name]" value='<%=item.name%>' required>
               </div>
               <div class="mb-3 col-lg-6 col-md-12">
                 <label class=" ">Category</label>
-                <input type="text" class="form-control" name="item[category]" value='<%= item.category  %>' required>
+                <input type="text" class=" " name="item[category]" value='<%= item.category  %>' required>
               </div>
             </div>
             <div class='row'>
               <div class="mb-3 col-lg-6 col-md-12">
                   <label class=" ">Price</label>
-                  <input type="number" class="form-control" name="item[price]" value='<%= item.price %>' required>
+                  <input type="number" class=" " name="item[price]" value='<%= item.price %>' required>
               </div>
               <div class="mb-3 col-lg-6 col-md-12">
                 <label class=" ">Stock</label>
-                <input type="number" class="form-control" name="item[stock]" value='<%= item.stock %>' required>
+                <input type="number" class=" " name="item[stock]" value='<%= item.stock %>' required>
               </div>
             </div>
             <div class="mb-3">
               <label class=" ">Description</label>
-              <textarea type="text" class="form-control" style='height: 175px;' name="item[desc]" required><%= item.desc %></textarea>
+              <textarea type="text" class=" " style='height: 175px;' name="item[desc]" required><%= item.desc %></textarea>
             </div>
             <div class='text-end pt-3'>
               <a class='btn btn-danger' href="/seller">Cancel</a>

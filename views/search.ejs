@@ -30,8 +30,8 @@
       <div class="box filter">
         <span>Filter</span>
         
-        <input type="number" class="form-control" onkeyup="liveSearch()" id='min' name="min" placeholder="Min">
-        <input type="number" class="form-control" onkeyup="liveSearch()" id='max' name="max" placeholder="Max">
+        <input type="number" class=" " onkeyup="liveSearch()" id='min' name="min" placeholder="Min">
+        <input type="number" class=" " onkeyup="liveSearch()" id='max' name="max" placeholder="Max">
       </div>
       <div class='row'>
         <div class='row col-12 mx-auto mt-3'>
@@ -75,7 +75,7 @@
                                                 <img src='<%= item.image %>' class="imgC">
                                                 <% var txtRate; %>
                                                   <% if(avgRating==0){ %>
-                                                    <% txtRate='No one rate this product' %>
+                                                    <% txtRate=' No rate in this product' %>
                                                       <% } else { %>
                                                         <% txtRate=avgRating + ' / 5.0' %>
                                                           <% } %>
