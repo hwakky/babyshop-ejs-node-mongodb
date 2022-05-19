@@ -20,98 +20,101 @@
   <script src="/js/header/Main.js" defer></script>
 </head>
 <body>
+  <header>
 <!-- navbar line 1 -->
-<% if(!currentUser) {%>
-  <nav>
-    <div class="navbar__search navbar__search--design">
-      <!-- logo -->
-      <a href="/"><img class="logo" src="/picture/main/logo.png"></a>
-      <span id="logotext">BABY SHOP</span>
+    <!-- navbar line 1 -->
+    <% if(!currentUser) {%>
+      <nav>
+        <div class="navbar__search navbar__search--design">
+          <!-- logo -->
+          <a href="/"><img class="logo" src="/picture/main/logo.png"></a>
+          <span id="logotext">BABY SHOP</span>
 
 
-      <!-- search bar -->
-      <div class="container__searchbar container__searchbar--design">
-        <div class="icon">
-          <i class='bx bx-search search'></i>
-        </div>
-        <div class="input">
-          <form action='/search' method="post" class="d-flex">
-            <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search"onkeyup="liveSearch()">
-            <i class='bx bx-x clear'></i>
-            <button class="btn btn-outline-warning" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    <!-- 3 icon right -->
-    <i class='bx bx-volume-mute icon__mute' id="icon-music"></i>
-    <i class='bx bxs-bell icon__noti'></i>
-    <a href='/login' style="margin-top: -1.5rem;"><i class='bx bx-cart icon__cart'></i></a>
-    </div>
-  </nav>
-
-  <!-- navbar line 2 -->
-  <nav>
-    <div class="navbar__list">
-      <div class="button__all">
-        <i class='bx bx-list-ul icon__list' onclick="openNav()"></i>
-        <span class="text__list" onclick="openNav()">All</span>
-      </div>
-      <a href="#" class="save__button">Saved</a>
-      <a href="/login" class="sell__button">Sell</a>
-      <a href="/login" class="signup__button">sign in</a>
-      <a href="/signup" class="signin__button">sign up</a>
-
-    </div>
-  </nav>
-  <% } else { %>
-    <nav>
-      <div class="navbar__search navbar__search--design">
-        <!-- logo -->
-        <a href="/"><img class="logo" src="/picture/main/logo.png"></a>
-        <span id="logotext">BABY SHOP</span>
-        <!-- search bar -->
-        <div class="container__searchbar container__searchbar--design">
-          <div class="icon">
-            <i class='bx bx-search search'></i>
+          <!-- search bar -->
+          <div class="container__searchbar container__searchbar--design">
+            <div class="icon">
+              <i class='bx bx-search search'></i>
+            </div>
+            <div class="input">
+              <form action='/search' method="post" class="d-flex">
+                <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search">
+                <i class='bx bx-x clear'></i>
+                <button class="btn btn-outline-warning" type="submit">Search</button>
+              </form>
+            </div>
           </div>
-          <div class="input">
-            <form action='/search' method="post" class="d-flex">
-              <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="myInput" onkeyup="liveSearch()">
-              <i class='bx bx-x clear'></i>
-              <button class="btn btn-outline-warning" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
+
         <!-- 3 icon right -->
         <i class='bx bx-volume-mute icon__mute' id="icon-music"></i>
         <i class='bx bxs-bell icon__noti'></i>
-        <a href='/cart/<%= currentUser.id %>' style="margin-top: -1.5rem;"><i class='bx bx-cart icon__cart'></i></a>
-      </div>
-    </nav>
-
-    <!-- navbar line 2 -->
-    <nav>
-      <div class="navbar__list">
-        <div class="button__all">
-          <i class='bx bx-list-ul icon__list' onclick="openNav()"></i>
-          <span class="text__list" onclick="openNav()">All</span>
+        <a href='/login' style="margin-top: -1.5rem;"><i class='bx bx-cart icon__cart'></i></a>
         </div>
-        <a href="#" class="save__button">Saved</a>
-        <a href="/sell" class="sell__button">Sell</a>
-        <% if(typeof(currentUser.image)=='undefined' ) { %>
-          <a href="/user/profile" class="signup__button2"><i class="fas fa-user me-3"></i>&nbsp;<%=
-              currentUser.username %></a>
-          <% } else { %>
-            <a href="/user/profile" class="signup__button2"><img src='<%= currentUser.image %>'
-                style='height: 30px; width: 30px; border-radius: 50%; object-fit:cover; z-index: -1;'><span>&nbsp;
-                <%= currentUser.username %></span></a>
-            <% } %>
-              <a href="/logout" class="signin__button3">Log out</a>
+      </nav>
 
-      </div>
-    </nav>
-    <% } %>
-</header>
+      <!-- navbar line 2 -->
+      <nav>
+        <div class="navbar__list">
+          <div class="button__all">
+            <i class='bx bx-list-ul icon__list' onclick="openNav()"></i>
+            <span class="text__list" onclick="openNav()"></span>
+          </div>
+          <a href="/login" class="save__button">All</a>
+          <a href="/login" class="sell__button">Sell</a>
+          <a href="/login" class="signup__button">sign in</a>
+          <a href="/signup" class="signin__button">sign up</a>
+
+        </div>
+      </nav>
+      <% } else { %>
+        <nav>
+          <div class="navbar__search navbar__search--design">
+            <!-- logo -->
+            <a href="/"><img class="logo" src="/picture/main/logo.png"></a>
+            <span id="logotext">BABY SHOP</span>
+            <!-- search bar -->
+            <div class="container__searchbar container__searchbar--design">
+              <div class="icon">
+                <i class='bx bx-search search'></i>
+              </div>
+              <div class="input">
+                <form action='/search' method="post" class="d-flex">
+                  <input class="form-control" type="search" placeholder="Search here" aria-label="Search" name='search' id="search">
+                  <i class='bx bx-x clear'></i>
+                  <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+            <!-- 3 icon right -->
+            <i class='bx bx-volume-mute icon__mute' id="icon-music"></i>
+            <i class='bx bxs-bell icon__noti'></i>
+            <a href='/cart/<%= currentUser.id %>' style="margin-top: -1.5rem;"><i class='bx bx-cart icon__cart'></i></a>
+          </div>
+        </nav>
+
+        <!-- navbar line 2 -->
+        <nav>
+          <div class="navbar__list">
+            <div class="button__all">
+              <i class='bx bx-list-ul icon__list' onclick="openNav()"></i>
+              <span class="text__list" onclick="openNav()"></span>
+            </div>
+            <a href="/search" class="save__button">All</a>
+            <a href="/sell" class="sell__button">Sell</a>
+            <% if(typeof(currentUser.image)=='undefined' ) { %>
+              <a href="/user/profile" class="signup__button2"><i class="fas fa-user me-3"></i>&nbsp;<%=
+                  currentUser.username %></a>
+              <% } else { %>
+                <a href="/user/profile" class="signup__button2"><img src='<%= currentUser.image %>'
+                    style='height: 20px; width: 20px; border-radius: 50%; object-fit:cover; z-index: -1;'><span>&nbsp;
+                    <%= currentUser.username %></span></a>
+                <% } %>
+                  <a href="/logout" class="signin__button3">Log out</a>
+
+          </div>
+        </nav>
+        <% } %>
+  </header>
 
 <!-- flash -->
 <% if(error && error.length>0){ %>

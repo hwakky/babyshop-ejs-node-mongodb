@@ -14,7 +14,8 @@ const dataItem = [
             sold:'31',
             author : {
                 id : '627ca21ceba5b65d5dd41cd1',
-                username : 'baby-shop.co'
+                username : 'baby-shop.co',
+                image:'/picture/main/logo.png'
             }
         },
         {   
@@ -22,12 +23,13 @@ const dataItem = [
             image:'/picture/pink.png',
             desc:'hood have rabbit ear',
             price:'999',
-            stock:'2',
+            stock:'11',
             category:'clothe',
             sold:'98',
             author : {
                 id : '627ca21ceba5b65d5dd41cd1',
-                username : 'baby-shop.co'
+                username : 'baby-shop.co',
+                image:'/picture/main/logo.png'
             }
         },
         {   
@@ -40,7 +42,8 @@ const dataItem = [
             sold:'12',
             author : {
                 id : '627ca21ceba5b65d5dd41cd1',
-                username : 'baby-shop.co'
+                username : 'baby-shop.co',
+                image:'/picture/main/logo.png'
             }
         },
         {   
@@ -53,7 +56,8 @@ const dataItem = [
             sold:'39',
             author : {
                 id : '627ca21ceba5b65d5dd41cd1',
-                username : 'baby-shop.co'
+                username : 'baby-shop.co',
+                image:'/picture/main/logo.png'
             }
         },
         {   
@@ -66,7 +70,8 @@ const dataItem = [
             sold:'20',
             author : {
                 id : '627ca21ceba5b65d5dd41cd1',
-                username : 'baby-shop.co'
+                username : 'baby-shop.co',
+                image:'/picture/main/logo.png'
             }
         }
 ];

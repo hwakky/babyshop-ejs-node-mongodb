@@ -384,8 +384,6 @@ a {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     border: 0.001rem solid rgb(194, 194, 194);
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 .card{
     margin-top: 1rem;
@@ -417,4 +415,43 @@ a {
 }
 .warp{
     flex-wrap: wrap;
+}
+.overflowY{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.overflowX{
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.spacebetween{
+  justify-content: space-between;
+}
+.right{
+  margin-right: 5rem;
+}
+.information{
+  padding: 1rem 2rem;
+  background-color: seashell;
+  border-radius: 1rem;
+}
+.summit{
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background-color: seashell;
+  border-radius: 1rem;
+}
+.row p {
+  padding-left: 1rem;
+}
+.boxx{
+  position: fixed;
+  width: 15rem;
+  height: 10rem;
+  right: 15rem;
+  padding: 1rem 2rem;
+  background-color:rgba(240, 248, 255,0.7);
+  border-radius: 1rem;
+  border: 0.1rem solid grey;
+  z-index: 2;
 }
