@@ -2,7 +2,6 @@
 const   express = require('express');
         Item = require('../model/itemall');
         Category = require('../model/category');
-        Promotion = require('../model/promotion');
         router = express.Router();
         User = require('../model/user');
         passport = require('passport');
@@ -34,13 +33,7 @@ router.get('/', function(req,res) {
                 if(err){
                     console.log(err);
                 } else {
-                    Promotion.find({},(err,foundPromotion) => {
-                        if(err){
-                            console.log(err);
-                        } else {
-                            res.render('homeAdmin.ejs', {item: allItems,category:allCategory,promotion:foundPromotion});
-                        }
-                    });
+                    res.render('homeAdmin.ejs', {item: allItems,category:allCategory});     
                 }
             });
         }
@@ -150,38 +143,6 @@ router.post('/info/edit/:id',upload.single('image'),function(req,res){
             } else {
                 res.redirect('/admin/user');
             }
-    });
-})
-
-router.get('/promotion', function(req,res){
-    Promotion.find({},function(err,foundPromotion){
-       if(err){
-           console.log(err);
-       } else {
-           res.render('adminPromotion.ejs',{promotion:foundPromotion});
-       }
-    });
-})
-
-router.post('/promotion/add', upload.single('image'), function(req,res){
-    var image = '/uploads/' + req.file.filename;
-    Promotion.create({image:image}, function(err,newPromotion){
-        if(err){
-            console.log(err);
-        } else {
-            res.redirect('/admin/promotion');
-        }
-    })
-    
-})
-
-router.post('/promotion/delete/:id', function(req,res){
-    Promotion.findByIdAndRemove(req.params.id, function(err,removedPromotion){
-       if(err){
-           console.log(err);
-       } else {
-           res.redirect('/admin/promotion');
-       }
     });
 })
 

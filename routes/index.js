@@ -2,7 +2,6 @@ const express = require("express");
 const { route } = require("express/lib/application");
 const Item = require("../model/itemall");
 Comment = require("../model/comment");
-const Promotion = require("../model/promotion");
 router = express.Router();
 User = require("../model/user");
 passport = require("passport");
@@ -65,19 +64,12 @@ router.get("/", middlewareObj.isUser, (req, res) => {
           if (err) {
             console.log(err);
           } else {
-            Promotion.find({}, (err, foundPromotion) => {
-              if (err) {
-                console.log(err);
-              } else {
                 res.render("home.ejs", {
                   item: allItems,
                   category:allCategory,
-                  promotion:foundPromotion,
                   corasel:corasel,
                   specualoffers:specualoffers,
                   alltype:alltype
-                });
-              }
             });
           }
         });
