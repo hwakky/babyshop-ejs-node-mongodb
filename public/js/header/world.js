@@ -42,3 +42,18 @@ var loadFile = function(event) {
     URL.revokeObjectURL(output.src) // free memory
   }
 };
+
+document.addEventListener(
+  "click",
+  function(event) {
+      var target = event.target;
+      var replyForm;
+      if (target.matches("[data-toggle='reply-form']")) {
+          replyForm = document.getElementById(target.getAttribute("data-target"));
+          text = document.getElementById(target.getAttribute("data-target")+"-2");
+          replyForm.classList.toggle("d-none");
+          text.classList.toggle('d-none');
+      }
+  },
+  false
+);

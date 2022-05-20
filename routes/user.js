@@ -22,6 +22,7 @@ const   Item = require('../model/itemall');
         },
         upload = multer({storage : storage, fileFilter : imageFilter});
 
+// profile
 router.get('/profile',middlewareObj.isLoggedIn,(req,res) => {
     User.findById(req.user.id,(err,foundUser) => {
         if(err){
@@ -46,6 +47,7 @@ router.post('/profile',middlewareObj.isLoggedIn,upload.single('image'),(req,res)
     });
 })
 
+
 router.post('/transaction', (req,res) => {
     Cart.find({userId:req.user.id}).populate('productId').exec((err,foundCart) => {
        if(err){
@@ -55,7 +57,6 @@ router.post('/transaction', (req,res) => {
                if(err){
                    console.log(err);
                } else {
-                   
                    res.render('transaction.ejs',{item:foundCart,user:foundUser});
                }
            })
@@ -93,7 +94,7 @@ router.post('/history', middlewareObj.isLoggedIn, (req,res) => {
                         fullname = req.body.fullname;
                         address = req.body.address;
                         phone = req.body.phone;
-                        date = new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'});
+                        datea = new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'});
                         newTransaction = {user:{userId:req.user.id,fullname:fullname,address:address,phone:phone},product:product,subtotal:subtotal,shippingFee:fee,total:total,date:date};
                     Transaction.create(newTransaction, (err,transactionAdded) => {
                     if(err){

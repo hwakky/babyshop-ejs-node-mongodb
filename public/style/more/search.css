@@ -28,8 +28,8 @@
   object-fit: cover;
   width: 5rem;
 }
-#btnScrollToTop{
-    display: none;
+#btnScrollToTop {
+  display: none;
 }
 .block {
   width: 80%;
@@ -42,103 +42,104 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.row{
-    display: flex;
-    flex-direction: row;
-
+.row {
+  display: flex;
+  flex-direction: row;
 }
-.box{
-    display: block;
+.box {
+  display: block;
 }
-.sort{
-    position: absolute;
-    right: 12rem;
+.sort {
+  position: absolute;
+  right: 12rem;
 }
-.filter{
-    position: absolute;
-    right: 20rem;
+.filter {
+  position: absolute;
+  right: 20rem;
 }
-.flex{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.card{
-    width: 20rem;
-    height: 20rem;
-    margin: 1rem 1.5rem;
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.imgC{
-    width: 100%;
-    height: 10rem;
-    object-fit: contain;
+.card {
+  width: 20rem;
+  height: 20rem;
+  margin: 1rem 1.5rem;
 }
 
-
-
-.heart{
-    background-color: transparent;
-    border: none;
-    position: relative;
-    top:-12rem;
-    right: -7rem;
-}
-.redH{
-    color: red;
-}
-.fa-star{
-    color: yellow;
-    position: relative;
-    top:-13.45rem;
-    right: -8.5rem;
-}
-.right{
-    position: relative;
-    right: 0;
-}
-.Right{
-    float: right;
-}
-.detail{
-    margin-top: -2rem;
-}
-.view{
-    background-color: white;
-    border: 0.1rem solid black;
-}
-.non{
-    border:none;
-    background-color: transparent;
-    cursor: pointer;
+.imgC {
+  width: 100%;
+  height: 10rem;
+  object-fit: contain;
 }
 
-.card{
-    width:20rem;
-    height: 18rem;
-    background-color: rgba(94, 123, 219,0.4);
-    margin-top: 2rem;
-    border-width: 0.2rem;
-    border-style: dashed;
-    border-radius: 0.5rem;
-    border-color: white;
-    text-align: center;
-    padding-top: 2rem;
-  }
+.heart {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  top: -12rem;
+  right: -7rem;
+}
+.redH {
+  color: red;
+}
+.fa-star {
+  color: yellow;
+  position: relative;
+  top: -13.45rem;
+  right: -8.5rem;
+}
+.right {
+  position: relative;
+  right: 0;
+}
+.Right {
+  float: right;
+}
+.detail {
+  margin-top: -2rem;
+}
+.view {
+  background-color: white;
+  border: 0.1rem solid black;
+}
+.non {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 
+.card {
+  width: 20rem;
+  height: 18rem;
+  background-color: rgba(94, 123, 219, 0.4);
+  margin-top: 2rem;
+  border-width: 0.2rem;
+  border-style: dashed;
+  border-radius: 0.5rem;
+  border-color: white;
+  text-align: center;
+  padding-top: 2rem;
+}
 
+#left {
+  padding-right: 1rem;
+}
+#right {
+  padding-left: 1rem;
+}
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
 
-
-
-
-
-
-
-
-
-
-::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+::-webkit-scrollbar {
+  display: none;
 }
