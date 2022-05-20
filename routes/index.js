@@ -282,32 +282,7 @@ router.post("/search", (req, res) => {
     });
 });
 
-router.get("/category/:type", (req, res) => {
-  req.session.fromUrl = req.originalUrl;
-  var searchCategory = req.params.type;
-  searchWord = "";
-  Item.find(
-    { category: { $regex: req.params.type, $options: "i" }, stock: { $gt: 0 } },
-    (err, foundItem) => {
-      if (err) {
-        console.log(err);
-      } else {
-        Category.find({}, (err, foundCategory) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.render("search.ejs", {
-              item: foundItem,
-              category: foundCategory,
-              searchCategory: searchCategory,
-              word: searchWord,
-            });
-          }
-        });
-      }
-    }
-  );
-});
+
 
 router.get("/sell", (req, res) => {
   res.render("sell.ejs");

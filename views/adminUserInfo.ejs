@@ -1,0 +1,52 @@
+<%- include('partials/header/Admin.ejs') %>
+
+  <div class="block">
+      <div class="underline">
+        <h1>User :<%= user.username %></h1>
+      </div>
+      <form action="/admin/info/edit/<%= user.id %>" method="post" enctype="multipart/form-data">
+      <div class="row" style="margin-top: 2rem;">
+        <div>
+          <img src='<%= user.image %>' id='output' style='height: 200px; width: 200px; object-fit: cover; border-radius: 50%;'>
+          <div class='fileUpload' style="margin-left:2rem">
+            <input type="file" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
+            <label for="file">
+              <span>Upload Image</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="column" style="margin-left: 2rem;">
+          <div class="row">
+            <div>
+              <label>Fullname</label>
+              <input type="text" name="user[fullname]" placeholder="Firstname Lastname" value='<%= user.fullname%>'>
+            </div>
+            <div>
+              <label>Phone</label>
+              <input type="number" name="user[phone]" placeholder="Phone number" value='<%= user.phone%>'>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label>Email</label>
+              <input type="text" name="user[email]" placeholder="Email" value='<%= user.email%>'>
+            </div>
+            <div>
+              <label>Username</label>
+              <input type="text" name="user[username]" placeholder="Address" value='<%= user.username%>'>
+            </div>
+          </div>
+          <div>
+            <label>Address</label>
+            <input type="text" name="user[address]" placeholder="Address" value='<%= user.addressLine+user.city+user.state+user.zipcode+user.country%>'>
+          </div>
+          <div style="margin-left: 25rem;">
+            <a href="/admin/user" style="color: red;">Go back</a>
+            <button type="submit" >Submit</button>
+          </div>
+        </div>
+      </div>
+      </form>
+  </div>
+<%- include('partials/footer/Main2.ejs') %>

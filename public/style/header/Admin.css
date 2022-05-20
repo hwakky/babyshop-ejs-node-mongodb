@@ -1,0 +1,122 @@
+.fileUpload {
+  background: #00bcbe;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.25em auto;
+  overflow: hidden;
+  padding: 0.875em;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+  cursor: pointer;
+}
+.fileUpload:hover,
+.fileUpload:active,
+.fileUpload:focus {
+  background: #00a2a4;
+  cursor: pointer;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 148px;
+  height: 46px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  position: fixed;
+  right: 100%;
+  bottom: 100%;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#left {
+  padding-right: 1rem;
+}
+#right {
+  padding-left: 1rem;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+body {
+  height: 60.5rem;
+}
+.overflowY {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.block {
+  width: 80%;
+  height: 30rem;
+  background-color: rgba(240, 248, 255, 0.7);
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border: 0.001rem solid rgb(194, 194, 194);
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+/* new world */
+.underline {
+  border-bottom: 0.1rem solid black;
+}
+.flex-warp {
+  flex-wrap: wrap;
+}
+
+.blockI{
+  width: 50%;
+  height: 18rem;
+  background-color: rgba(240, 248, 255,0.7);
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border: 0.001rem solid slategray;
+}
+
+.blockC{
+  width: 80%;
+  height: 14rem;
+  background-color: rgba(240, 248, 255,0.7);
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border: 0.001rem solid slategray;
+}
