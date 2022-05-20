@@ -104,47 +104,21 @@
                             <% } %>
                             <strong><%= comment.author.username %> :</strong>
                         </p>
-                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-
-                            <div class="row" style="margin-left: 80rem; margin-top: 0.3rem;">
-                                <a data-toggle="reply-form" data-target="<%= comment.id %>-reply-form"><i class="fas fa-edit"></i><span>Edit</span></a>
-                                <form onsubmit="if(!confirm('Are you sure?')){return false;}" action="/comment/<%= comment.id %>/delete" method='post'>
-                                    <button type='submit'><i class="fas fa-trash-alt"></i><span>Delete</span></button>
-                                </form>
-                            </div>
-                        <% } %>
-
-                    </div>
-                    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                    <div class='row underline'>
-                        <p id="<%= comment.id%>-reply-form-2"><%= comment.text %></p>
-                        <form action="/comment/<%=comment.id%>/edit" method="post" class="reply-form" id="<%= comment.id%>-reply-form">
-                            <textarea rows="2" name='text'><%= comment.text %></textarea>
-                            <div class='d-flex justify-content-end'>
-                                <button type="button" class='btn btn-danger mx-2' data-toggle="reply-form" data-target="<%= comment.id%>-reply-form">Cancel</button>
-                                <button type="submit" class='btn btn-primary'>Submit</button>
-                            </div>
+                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                    <div class="row" style="margin-left: 80rem; margin-top: 0.3rem;">
+                        <a data-toggle="reply-form" data-target="<%= comment.id %>-reply-form"><i class="fas fa-edit"></i><span>Edit</span></a>
+                        <form onsubmit="if(!confirm('Are you sure?')){return false;}" action="/comment/<%= comment.id %>/delete" method='post'>
+                            <button type='submit'><i class="fas fa-trash-alt"></i><span>Delete</span></button>
                         </form>
-                        <div>
-                            <% var i; %>
-                            <% for(i=1;i <= comment.rating;i++){ %>
-                                <i class="fas fa-star" style='color: orange;'></i>
-                            <% } %>
-                        </div>
-                        <p><%= comment.date %></p>
                     </div>
+
+                    
+                    
+
                     <% } else { %>
-                        <div class="row underline">
-                        <p id="<%= comment.id%>-reply-form-2"><%= comment.text %></p>
-                        <div>
-                            <% var i; %>
-                            <% for(i=1;i <= comment.rating;i++){ %>
-                                <i class="fas fa-star" style='color: orange;'></i>
-                            <% } %>
-                        </div>
-                        <p><%= comment.date %></p>
-                        </div>
-                    <% } %>
+                            <p id="<%= comment.id%>-reply-form-2"><%= comment.text %></p>
+                <% } %>
+                    </div>
             <% }); %>
         </div>
     </div>
