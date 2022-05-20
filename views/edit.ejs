@@ -1,62 +1,52 @@
-<%- include('partials/headerNavbarInput.ejs') %>
-<script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output.src) // free memory
-    }
-  };
-</script>
-<div class='p-3 mb-5'>
-  <div class='container pt-3 pb-2 bg-white rounded-3'>
-    <div class='mx-3'>
-      <h1>EDIT PRODUCT INFORMATION</h1>
-      <hr>
-    </div>
-    <form action="/seller/edit/<%= item.id%>?_method=PUT" method="post" enctype="multipart/form-data">
-        <div class="container row py-4">
-          <div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center mt-3 mb-2'>
-            <img src='<%= item.image %>' id='output' style='height: 300px; width: 250px; object-fit: cover;'>
+<%- include('partials/header/world.ejs') %>
+
+  <div class="blockE">
+      <div class="underline">
+        <h1>Edit Product Info.</h1>
+      </div>
+      <form action="/seller/edit/<%= item.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="row">
+          <div class="column">
+            <img src='<%= item.image %>' id='output' style='height: 200px; width: 100%; object-fit: cover;'>
             <div class='fileUpload'>
-              <input type="file" class="  upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
+              <input type="file" class="upload" onchange="loadFile(event)" name="image" placeholder="Image" accept="image/*">
               <label for="file" class="btn-3">
                 <span>Upload Image</span>
               </label>
             </div>
           </div>
-          <div class='col-xl-8 col-lg-8 col-md-6 col-sm-12'>
-            <div class='row'>
-              <div class="mb-3 col-lg-6 col-md-12">
-                <label class=" ">Name</label>
-                <input type="text" class=" " name="item[name]" value='<%=item.name%>' required>
+          <div class="column" style="padding:3rem 0 0 2rem;">
+            <div class="row">
+              <div>
+                <label>Name&nbsp;</label>
+                <input type="text" name="item[name]" value='<%=item.name%>' required>
               </div>
-              <div class="mb-3 col-lg-6 col-md-12">
-                <label class=" ">Category</label>
-                <input type="text" class=" " name="item[category]" value='<%= item.category  %>' required>
-              </div>
-            </div>
-            <div class='row'>
-              <div class="mb-3 col-lg-6 col-md-12">
-                  <label class=" ">Price</label>
-                  <input type="number" class=" " name="item[price]" value='<%= item.price %>' required>
-              </div>
-              <div class="mb-3 col-lg-6 col-md-12">
-                <label class=" ">Stock</label>
-                <input type="number" class=" " name="item[stock]" value='<%= item.stock %>' required>
+              <div>
+                <label>Category&nbsp;</label>
+                <input type="text" name="item[category]" value='<%= item.category  %>' required>
               </div>
             </div>
-            <div class="mb-3">
-              <label class=" ">Description</label>
-              <textarea type="text" class=" " style='height: 175px;' name="item[desc]" required><%= item.desc %></textarea>
+            <div class="row">
+              <div>
+                <label>Price&nbsp;</label>
+                <input type="number" name="item[price]" value='<%= item.price %>' required>
+              </div>
+              <div>
+                <label>Stock&nbsp;</label>
+                <input type="number" name="item[stock]" value='<%= item.stock %>' required>
+              </div>
             </div>
-            <div class='text-end pt-3'>
-              <a class='btn btn-danger' href="/seller">Cancel</a>
-              <button type="submit" class="btn btn-primary">Edit</button>
+            <br>
+            <div>
+              <label>Description&nbsp;</label>
+              <textarea type="text" rows="2" name="item[desc]" style=" position: absolute;" required><%= item.desc %></textarea>
             </div>
           </div>
-        </div>
+          <div style="float: right; margin-top: 10rem; margin-left: -6rem;">
+            <a style="color: red;" href="/seller">Cancel</a>
+            <button type="submit">Edit</button>
+          </div>
+      </div>
     </form>
   </div>
-</div>
-<%- include('partials/footer.ejs') %>
+<%- include('partials/footer/Main2.ejs') %>

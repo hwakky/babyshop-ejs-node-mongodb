@@ -94,7 +94,7 @@ router.post('/history', middlewareObj.isLoggedIn, (req,res) => {
                         fullname = req.body.fullname;
                         address = req.body.address;
                         phone = req.body.phone;
-                        datea = new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'});
+                        date = new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'});
                         newTransaction = {user:{userId:req.user.id,fullname:fullname,address:address,phone:phone},product:product,subtotal:subtotal,shippingFee:fee,total:total,date:date};
                     Transaction.create(newTransaction, (err,transactionAdded) => {
                     if(err){

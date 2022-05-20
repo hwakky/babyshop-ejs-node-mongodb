@@ -58,6 +58,28 @@
   <a href="#" class="sp-link">see more...</a>
 </div>
 
+<!-- most popular -->
+<div class="sp-container" style="margin-top: 20rem;">
+  <h1 class="sp-text">Most Popular</h1>
+  <div class="row sp-block">
+    <% item.forEach((item) => { %>
+        <div class="card" style="margin: 2rem 1rem;">
+          <img src='<%= item.image %>' height="200px" width="100%" style="object-fit: contain;">
+          <div class="showdetailS">
+            <p class="nameS">
+              <%= item.name %>
+            </p>
+            <p class="normalpriceS">
+              Sold :<%= item.sold %>
+            </p>
+          </div>
+        </div>
+    <% }); %>
+  </div>
+  <a href="#" class="sp-link">see more...</a>
+</div>
+
+
 <!-- All -->
 <div class="all">
   <% alltype.forEach(function(alltype){ %>
@@ -76,6 +98,7 @@
     </div>
     <% }); %>
 </div>
+
 
 <!-- background -->
 <!-- sound -->

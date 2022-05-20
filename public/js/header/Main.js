@@ -128,7 +128,7 @@ function showSlides() {
 }
 
 // timer 
-var countDownDate = new Date("May 24, 2022 1:30:00").getTime();
+var countDownDate = new Date("May 25, 2022 4:30:00").getTime();
 
 var x = setInterval(function() {
 

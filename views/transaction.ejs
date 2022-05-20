@@ -32,15 +32,15 @@
   <div class="column summit">
       <div class="right row">
         <h3>Product name</h3>
-        <h3 style="margin-left: 6.3rem;">Price</h3>
+        <h3 style="margin-left: 4.6rem;">Price</h3>
         <h3>Amount</h3>
         <h3>Subtotal</h3>
       </div>
       <% var subtotal = 0,fee=100 %>
       <% item.forEach((cart) => { %>
       <div class="row">
-        <img src='<%= cart.productId.image %>' style="height: 100px; width: 100px; border-radius: 12px;" class='card-img-top'>
-        <p><%= cart.productId.name %>฿</p>
+        <img src='<%= cart.productId.image %>' style="height: 100px; width: 100px; border-radius: 12px;">
+        <p><%= cart.productId.name %></p>
         <p><%= cart.productId.price %>฿</p>
         <p>x<%= cart.quantity %></p>
         <p>฿<%= cart.productId.price * cart.quantity %></p>
@@ -49,14 +49,20 @@
         <% }); %>
         <% total = subtotal + fee %>
       <div class="boxx">
-        <h5>Subtotal<input type='hidden' name='subtotal' value='<%= subtotal %>'></h5>
-        <p>฿<%= subtotal %></p>
-        <h5>Shipping fee<input type='hidden' name='fee' value="<%= fee %>"></h5>
-        <p>฿<%= fee %></p>
-        <h4>Total<input type='hidden' name='total' value='<%= total %>'></h4>
-        <h4>฿<%= total %></h4>
+        <div style="display: flex; flex-direction: row;">
+          <h5>Subtotal<input type='hidden' name='subtotal' value='<%= subtotal %>'></h5>
+          <p><%= subtotal %>฿</p>
+        </div>
+        <div style="display: flex; flex-direction: row;">
+          <h5>Shipping fee<input type='hidden' name='fee' value="<%= fee %>"></h5>
+          <p><%= fee %>฿</p>
+        </div>
+        <div style="display: flex; flex-direction: row;">
+          <h4>Total<input type='hidden' name='total' value='<%= total %>'></h4>
+          <h4><%= total %>฿</h4>
+        </div>
         <div>
-          <button class='btn btn-success' style="background-color: red;" type="submit">Submit</button>
+          <button style="background-color: red; width: 100%; color: white;" type="submit">Submit</button>
         </div>
       </div>
   </div> 
