@@ -1,5 +1,5 @@
 <%- include('partials/header/world.ejs') %>
-    <div class="block overflowY">
+    <div class="block overflowY flex-warp">
         <div class="underline">
           <h1>MY FAVORITE</h1>
         </div>
@@ -8,8 +8,8 @@
             <h3 style="text-align: center; margin-top:2rem;">No item in favorite</h3>
         </div>
         <% } else { %>
-            <div class="row warp">
-                <div id='table'>
+            <div class="row" >
+                <div id='table' class="row">
                     <% item.forEach((item) => { %>
                     <% var avgRating; %>
                     <% if(item.comments.length == 0){ %>
@@ -27,6 +27,7 @@
                     <% if(isNaN(avgRating) || avgRating == 0){ %>
                     <% avgRating=0 %>
                     <% } %>
+                          <div style="display:flex; flex-warp:warp; flex-direction: row;">
                             <div class="card">
                                 <img src='<%= item.image %>' class='img'>
                                 <% var showRate; %>
@@ -35,16 +36,17 @@
                                   <% } else { %>
                                   <% showRate = avgRating + ' / 5.0' %>
                                   <% } %>
-                                <div class="row iconP">
+                                <div class="row">
                                     <form action='/user/favorite/remove/<%= item.id %>' method='POST'>
-                                      <button class='heart'><i class="fas fa-heart"></i></button>
+                                      <button class='heart' style="margin-top: -8rem;margin-left:5rem;"><i class="fas fa-heart"></i></button>
                                     </form>
-                                    <i class="fas fa-star" style='color: orange; display: inline;' title='<%= showRate %>'></i>
+                                    <i class="fas fa-star" style='color: orange;' title='<%= showRate %>'></i>
                                 </div>
                                 <div class="detail">
-                                  <h3><%= item.name %></h3>
-                                  <p>Sold : <%= item.sold %></p>
-                                  <h4>฿<%= item.price %></h4>
+                                  <div style="justify-content: space-around;" class="row">
+                                    <h3><%= item.name %></h3>
+                                    <h4><%= item.price %>฿</h4>
+                                  </div>
                                   <div class="row">
                                       <span>By :&nbsp;</span>
                                       <div>
@@ -58,13 +60,14 @@
                                       </div>
                                     </div>
                                     <div class="row" style="justify-content: space-between;">
-                                      <a href ='/show/<%= item._id%>' style="color:blue;">View</a>
+                                      <a href ='/show/<%= item._id%>' style="color:black;">> View <</a>
                                       <form action="/cart/<%= item._id %>" method="post">
                                         <button type="submit">Add to cart</button>
                                       </form>
                                     </div>
                               </div>
                               </div>
+                          </div>
                     <% }); %>
                 </div>
             </div>

@@ -50,20 +50,20 @@
                                 <div>
                                   <% if(!currentUser){ %>
                                     <form action='/user/favorite/add/<%= item.id %>' method='post'>
-                                      <button class='heart'><i class="far fa-heart"></i></button>
+                                      <button style="background-color: transparent;border: none;top: -11rem; right: -9rem;position: relative;"><i class="far fa-heart"></i></button>
                                     </form>
                                   <% } else { %>
                                   <% if((currentUser.favorite).includes(item.id)) {%>
                                     <form action='/user/favorite/remove/<%= item.id %>' method='post'>
-                                      <button class='heart'><i class="fas fa-heart redH"></i></button>
+                                      <button style="background-color: transparent;border: none;top: -11rem; right: -9rem;position: relative;"><i class="fas fa-heart redH"></i></button>
                                     </form>
                                   <% } else { %>
                                     <form action='/user/favorite/add/<%= item.id %>' method='post'>
-                                      <button class='heart'><i class="far fa-heart"></i></button>
+                                      <button style="background-color: transparent;border: none;top: -11rem; right: -9rem;position: relative;"><i class="far fa-heart"></i></button>
                                     </form>
                                   <% } %>
                                   <% } %>
-                                  <i class="fas fa-star" title='<%= txtRate %>'></i>
+                                  <i class="fas fa-star" title='<%= txtRate %>' style="background-color: transparent;border: none;top: -12.3rem; right: -10.5rem;position: relative;"></i>
                                 </div>
                               </div>
                               <div class="detail">

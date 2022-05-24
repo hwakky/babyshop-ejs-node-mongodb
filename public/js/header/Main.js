@@ -96,7 +96,7 @@ window.addEventListener("load", () => {
 
 closeBtn.addEventListener("click", () => {
   popupScreen.classList.remove("active");
-  document.cookie = "test=test; max-age=" + 1 * 1 * 20;
+  document.cookie = "test=test; max-age=" + 1 * 1 * 300;
 });
 const WebsiteCookie = document.cookie.indexOf("test=");
 

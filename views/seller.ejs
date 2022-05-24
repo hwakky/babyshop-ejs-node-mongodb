@@ -1,7 +1,7 @@
 <%- include('partials/header/world.ejs') %>
 
 <div class="block">
-  <div class="row underline" style="justify-content: space-between;">
+  <div class="row underline" style="justify-content: space-between; padding-bottom: 0.5rem;">
     <h1>Your Shop</h1>
     <a href='/seller/new' class="badd" style='font-size: 2rem;'>Add new product</a>
   </div>
@@ -29,7 +29,7 @@
                 <% } %>
                 <div class="card" style='border-radius: 1rem;'>
                   <div>
-                    <img src='<%= item.image %>' height="200px" width="100%" style="object-fit: cover;">
+                    <img src='<%= item.image %>' height="200px" width="100%" style="object-fit: contain;">
                     <% var showRate; %>
                     <% if(avgRating == 0){ %>
                       <% showRate=' No Rate' %>
@@ -45,10 +45,10 @@
                   </div>
                 </div>
                 <div>
-                  <a href = '/show/<%= item._id%>' style="border:0.1rem solid black; padding:0.1rem 0.2rem; background-color:rgb(81, 255, 0); position: relative;left: -1rem;top:1.3rem;">View</a>
-                  <a href='/seller/edit/<%= item._id%>' style="border:0.1rem solid black; padding:0.1rem 0.2rem; background-color:rgb(255, 234, 49); position: relative;left: -4.05rem;top:3.2rem;">Edit</a>
+                  <a href = '/show/<%= item._id%>' style="border:0.1rem solid black; padding:0.1rem 0.2rem; background-color:rgb(81, 255, 0); position: relative;left: -1rem;top:2.5rem;">View</a>
+                  <a href='/seller/edit/<%= item._id%>' style="border:0.1rem solid black; padding:0.1rem 0.2rem; background-color:rgb(255, 234, 49); position: relative;left: -4.05rem;top:4.4rem;">Edit</a>
                   <form onsubmit="if(!confirm('yes/no?')){return false;}" action='/seller/delete/<%= item._id%>' method="post">
-                    <button type='submit' style="background-color:red; position: relative;left: -1.05rem;top:3rem;">Delete</button>
+                    <button type='submit' style="background-color:red; position: relative;left: -1.05rem;top:4.2rem;">Delete</button>
                   </form>
                 </div>
               <% }); %>

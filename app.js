@@ -45,7 +45,7 @@ app.use(function(req,res,next){
     res.locals.success = req.flash('success');
     next();
 })
-seedDB();
+// seedDB();
 
 
 // declare route
@@ -57,5 +57,5 @@ app.use('/user',middlewareObj.isUser,middlewareObj.isLoggedIn, userRoutes);
 
 // check connection
 app.listen('3000',() => {
-    console.log('Activated');
+    console.log('Server start in port 3000');
 })

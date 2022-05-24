@@ -23,7 +23,7 @@ const dataItem = [
             image:'/picture/pink.png',
             desc:'hood have rabbit ear',
             price:'999',
-            stock:'11',
+            stock:'20',
             category:'clothe',
             sold:'98',
             author : {
@@ -51,7 +51,7 @@ const dataItem = [
             image:'/picture/whiteback.png',
             desc:'big black bow',
             price:'200',
-            stock:'5',
+            stock:'30',
             category:'clothe',
             sold:'39',
             author : {

@@ -412,7 +412,7 @@ a {
 .img{
     height: 12rem;
     width: auto;
-    object-fit: cover;
+    object-fit: contain;
 }
 .iconP{
     position: relative;
@@ -585,8 +585,8 @@ input[type="file"] {
   background-color: transparent;
   border: none;
   position: relative;
-  top: -12rem;
-  right: -7rem;
+  top: -13.45rem;
+  right: -11rem;
 }
 .redH {
   color: red;
@@ -595,7 +595,7 @@ input[type="file"] {
   color: yellow;
   position: relative;
   top: -13.45rem;
-  right: -8.5rem;
+  right: -12rem;
 }
 .right {
   position: relative;
@@ -651,4 +651,8 @@ input[type="file"] {
 }
 .flex-end{
   justify-content: space-around;
+}
+
+.warp{
+  flex-wrap: wrap;
 }
