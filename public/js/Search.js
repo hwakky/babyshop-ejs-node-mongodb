@@ -4,9 +4,7 @@ function liveSearch() {
   filter = input.value.toUpperCase();
   ul = document.getElementById("myUL");
   li = ul.getElementsByClassName('search');
-
   word = document.getElementById('word');
-
   word.innerText = input.value; 
   word.value = input.value;
   min = document.getElementById('min').value;

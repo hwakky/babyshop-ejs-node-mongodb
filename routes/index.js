@@ -1,6 +1,6 @@
 const express = require("express");
 const { route } = require("express/lib/application");
-const Item = require("../model/itemall");
+const Item = require("../model/product");
 Comment = require("../model/comment");
 router = express.Router();
 User = require("../model/user");
@@ -31,15 +31,15 @@ middlewareObj = require("../middleware/index");
   (upload = multer({ storage: storage, fileFilter: imageFilter }));
 
 const corasel = [
-    {name:"ABC-Shirt", price:"500", src:"/picture/index/a-1.png", count: `1 / 3`,link:"/login"},
-    {name:"Snowboard", price:"1,200", src:"/picture/index/a-2.png",count: `2 / 3`,link:"/login"},
-    {name:"Snowman", price:"200", src:"/picture/index/a-3.png",count: `3 / 3`,link:"/login"}
+    {name:"ABC-Shirt", price:"500", src:"/picture/index/a-1.png", count: `1 / 3`,link:"/signin"},
+    {name:"Snowboard", price:"1,200", src:"/picture/index/a-2.png",count: `2 / 3`,link:"/signin"},
+    {name:"Snowman", price:"200", src:"/picture/index/a-3.png",count: `3 / 3`,link:"/signin"}
 ];
 const specualoffers = [
-    {name:"Huggy Wuggy",src:"/picture/index/bluetoy.png",price:"450",discount:"1",link:"/login"},
-    {name:"Kissy Missy ",src:"/picture/index/pinktoy.png",price:"450",discount:"1",link:"/login"},
-    {name:"Mr.white",src:"/picture/index/whitetoy.png",price:"899",discount:"580",link:"/login"},
-    {name:"Chicken",src:"/picture/index/yellowtoy.png",price:"300",discount:"150",link:"/login"}
+    {name:"Huggy Wuggy",src:"/picture/index/bluetoy.png",price:"450",discount:"1",link:"/signin"},
+    {name:"Kissy Missy ",src:"/picture/index/pinktoy.png",price:"450",discount:"1",link:"/signin"},
+    {name:"Mr.white",src:"/picture/index/whitetoy.png",price:"899",discount:"580",link:"/signin"},
+    {name:"Chicken",src:"/picture/index/yellowtoy.png",price:"300",discount:"150",link:"/signin"}
 ];
 const alltype = [
     {title:"Clothes",src:"/picture/index/clothe.png",link:"/clothes"},
@@ -54,7 +54,6 @@ router.get("/", middlewareObj.isUser, (req, res) => {
   req.session.fromUrl = "/";
   Item.find({ stock: { $gt: 0 } })
     .sort({ sold: -1 })
-    .populate("comments")
     .limit(4)
     .exec((err, allItems) => {
       if (err) {
@@ -81,14 +80,14 @@ router.get("/darkmode", (req, res) => {
   res.render("darkmode.ejs",{corasel:corasel,specualoffers:specualoffers,alltype:alltype});
 });
 
-router.get("/login", (req, res) => {
-  res.render("login.ejs");
+router.get("/signin", (req, res) => {
+  res.render("signin.ejs");
 });
 
 router.post(
-  "/login",
+  "/signin",
   passport.authenticate("local", {
-    failureRedirect: "/login",
+    failureRedirect: "/signin",
     successFlash: true,
     failureFlash: true,
     successFlash: "Successfully log in",
@@ -221,66 +220,42 @@ router.post(
   }
 );
 
-router.get("/search", (req, res) => {
+router.get('/search', (req,res) => {
   req.session.fromUrl = req.originalUrl;
-  var searchWord = "";
-  searchCategory = "";
-  Item.find({ stock: { $gt: 0 } })
-    .populate("comments")
-    .exec((err, foundItem) => {
-      if (err) {
-        console.log(err);
+  var searchWord ='';
+      searchCategory = '';
+      Item.find({stock:{$gt:0}}).populate('comments').exec((err,foundItem) => {
+      if(err){
+          console.log(err);
       } else {
-        Category.find({}, (err, foundCategory) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.render("search.ejs", {
-              item: foundItem,
-              word: searchWord,
-              category: foundCategory,
-              searchCategory: searchCategory,
-            });
-          }
-        });
+          Category.find({},(err,foundCategory) => {
+              if(err){
+                  console.log(err);
+              } else {
+                  res.render('search.ejs',{item:foundItem,word:searchWord,category:foundCategory,searchCategory:searchCategory});
+              }
+          })
       }
-    });
-});
-
-router.post("/search", (req, res) => {
-  var searchWord = req.body.search;
-  searchCategory = "";
-  Item.find({
-    $and: [
-      {
-        $or: [
-          { name: { $regex: searchWord, $options: "i" } },
-          { category: { $regex: searchWord, $options: "i" } },
-        ],
-      },
-      { stock: { $gt: 0 } },
-    ],
   })
-    .populate("comments")
-    .exec((err, foundItem) => {
-      if (err) {
-        console.log(err);
+})
+
+router.post('/search', (req,res) => {
+  var searchWord = req.body.search;
+      searchCategory = '';
+      Item.find({$and:[{$or:[{name:{$regex:searchWord,$options:'i'}},{category:{$regex:searchWord,$options:'i'}}]},{stock:{$gt:0}}]}).populate('comments').exec((err,foundItem) => {
+      if(err){
+          console.log(err);
       } else {
-        Category.find({}, (err, foundCategory) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.render("search.ejs", {
-              item: foundItem,
-              category: foundCategory,
-              word: searchWord,
-              searchCategory: searchCategory,
-            });
-          }
-        });
+          Category.find({},(err,foundCategory) => {
+              if(err){
+                  console.log(err);
+              } else {
+                  res.render('search.ejs',{item:foundItem,category:foundCategory,word:searchWord,searchCategory:searchCategory});
+              }
+          })
       }
-    });
-});
+  })
+})
 
 
 

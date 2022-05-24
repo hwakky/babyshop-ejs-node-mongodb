@@ -1,0 +1,40 @@
+<%- include('../partials/header/Admin.ejs') %>
+
+  <div class="block overflowY" style="height: 40rem;">
+    <div>
+      <div class="underline">
+        <h1>All Product In Baby Shop</h1>
+      </div>
+      <div class="row  flex-warp">
+        <% item.forEach((item) => { %>
+        <div class="card " style="height: 20rem;">
+          <img src='<%= item.image %>' height="200px" width="100%" style="object-fit: contain; border-radius: 12px;">
+          <div>
+            <p>Name: <%= item.name %></p>
+            <p>Price :<%= item.price %>฿</p>
+            <p>Sold : <%= item.sold %></p>
+            <div class="row">
+              <span>By :</span>
+              <div class="row">
+                <% if(typeof(item.author.image) == 'undefined') { %>
+                  <i class="fas fa-user me-3" style='font-size: 20px;'></i><span><%= item.author.username %></span>
+                <% } else { %>
+                  <img src='<%= item.author.image %>' style='height: 20px; width: 20px; border-radius: 50%; object-fit:cover;'><span ><%= item.author.username %></span>
+                  </form>
+                <% } %>
+              </div> 
+              <a href = '/admin/product/<%= item._id%>' style="color:yellow">View</a>
+              <form onsubmit="if(!confirm('Are you sure?')){return false;}" action='/admin/product/delete/<%= item.id %>' method="post">
+                <button type='submit' style="background-color: red; color:white; border:none">Delete</button>
+              </form>
+             </div>
+          </div>
+        </div>  
+        <% }); %>
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+<%- include('../partials/footer/Main2.ejs') %>

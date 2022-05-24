@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const itemallDb = new mongoose.Schema({
+const productDb = new mongoose.Schema({
     name : String,
     image : String,
     desc : String,
@@ -25,4 +25,4 @@ const itemallDb = new mongoose.Schema({
     ]
 });
 
-module.exports = mongoose.model('Item', itemallDb);
+module.exports = mongoose.model('Item', productDb);

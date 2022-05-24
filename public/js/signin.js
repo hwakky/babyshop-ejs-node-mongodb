@@ -1,4 +1,3 @@
-
 function myFunction(){
     var x = document.getElementById("password");
     var y = document.getElementById("hide1");

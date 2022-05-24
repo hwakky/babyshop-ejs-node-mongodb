@@ -133,8 +133,6 @@ body{
 
 
 
-
-
 /* footer */
 .footer {
     position: fixed;
@@ -154,3 +152,29 @@ body{
     position: relative;
     left: 2rem;
 }
+
+.img-magnifier-container{
+    position:relative;
+}
+.img-magnifier-container img{
+    height: 15rem;
+}
+
+.img-magnifier-glass {
+    position: absolute;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 100px;
+    height: 100px;
+}
+
+#myimage{
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+#myimage:hover {opacity: 0.7;}
+  

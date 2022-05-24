@@ -30,13 +30,13 @@
                 <div class="card" style='border-radius: 1rem;'>
                   <div>
                     <img src='<%= item.image %>' height="200px" width="100%" style="object-fit: cover;">
-                    <% var txtRate; %>
+                    <% var showRate; %>
                     <% if(avgRating == 0){ %>
-                      <% txtRate=' No rate in this product' %>
+                      <% showRate=' No Rate' %>
                       <% } else { %>
-                      <% txtRate = avgRating + ' / 5.0' %>
+                      <% showRate = avgRating + ' / 5.0' %>
                       <% } %>
-                    <i class="fas fa-star" style='color: orange; position: relative;top:-13.5rem;left: 14rem;' title='<%= txtRate %>'></i>
+                    <i class="fas fa-star" style='color: orange; position: relative;top:-13.5rem;left: 14rem;' title='<%= showRate %>'></i>
                   </div>
                   <div>
                     <p>Name :<%= item.name %></p>

@@ -29,17 +29,17 @@
                     <% } %>
                             <div class="card">
                                 <img src='<%= item.image %>' class='img'>
-                                <% var txtRate; %>
+                                <% var showRate; %>
                                 <% if(avgRating == 0){ %>
-                                  <% txtRate=' No rate in this product' %>
+                                  <% showRate=' No Rate' %>
                                   <% } else { %>
-                                  <% txtRate = avgRating + ' / 5.0' %>
+                                  <% showRate = avgRating + ' / 5.0' %>
                                   <% } %>
                                 <div class="row iconP">
                                     <form action='/user/favorite/remove/<%= item.id %>' method='POST'>
                                       <button class='heart'><i class="fas fa-heart"></i></button>
                                     </form>
-                                    <i class="fas fa-star" style='color: orange; display: inline;' title='<%= txtRate %>'></i>
+                                    <i class="fas fa-star" style='color: orange; display: inline;' title='<%= showRate %>'></i>
                                 </div>
                                 <div class="detail">
                                   <h3><%= item.name %></h3>

@@ -1,6 +1,5 @@
-
 const   express = require('express');
-        Item = require('../model/itemall');
+        Item = require('../model/product');
         Category = require('../model/category');
         router = express.Router();
         User = require('../model/user');
@@ -25,7 +24,7 @@ const   express = require('express');
         upload = multer({storage : storage, fileFilter : imageFilter});
 
 router.get('/', function(req,res) {
-    res.render('Admin.ejs')
+    res.render('Admin/Admin.ejs')
 })
 
 router.get('/user', (req,res) => {
@@ -33,16 +32,16 @@ router.get('/user', (req,res) => {
         if(err){
             console.log(err);
         } else {
-            if(req.user.masterAdmin == true){
-                User.find({admin : true,masterAdmin:{$ne: true}},function(err,foundAdmin){
+            if(req.user.admin == true){
+                User.find({admin : true,admin:{$ne: true}},function(err,foundAdmin){
                     if(err){
                         console.log(err);
                     } else {
-                        res.render('adminUser.ejs',{user:foundUser,admin:foundAdmin});
+                        res.render('Admin/AdminUser.ejs',{user:foundUser,admin:foundAdmin});
                     }
                 })
             } else {
-                res.render('adminUser.ejs',{user:foundUser});
+                res.render('Admin/AdminUser.ejs',{user:foundUser});
             }
         }
     })
@@ -63,7 +62,7 @@ router.get('/info/:id', function(req,res){
         if(err){
             console.log(err);
         } else {
-            res.render('adminUserInfo.ejs',{user:foundUser});
+            res.render('Admin/adminUserInfo.ejs',{user:foundUser});
         }
     })
 })
@@ -86,7 +85,7 @@ router.get('/product', function(req,res){
         if(err){
             console.log(err);
         } else {
-            res.render('adminProduct.ejs',{item:foundItem});
+            res.render('Admin/AdminProduct.ejs',{item:foundItem});
         }
     })
 })
@@ -96,7 +95,7 @@ router.post('/product/delete/:id',function(req,res){
         if(err){
             console.log(err);
         } else {
-            res.redirect('/admin/product');
+            res.redirect('/product');
         }
     })
 })
@@ -106,7 +105,7 @@ router.get('/product/:id', function(req,res){
         if(err) {
             console.log(err);
         } else {
-            res.render('adminProductAndComment.ejs',{item:foundItem});
+            res.render('Admin/AdminProductInfo.ejs',{item:foundItem});
         }
     })
 })

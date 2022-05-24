@@ -1,5 +1,5 @@
 var express = require('express');
-const   Item = require('../model/itemall');
+const   Item = require('../model/product');
         router = express.Router();
         User = require('../model/user');
         passport = require('passport');

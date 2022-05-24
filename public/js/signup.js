@@ -54,15 +54,14 @@ function nextPrev(n) {
     // add text
     var paragraph = document.getElementById("finish");
     var text = document.createTextNode("Thankyou for register :)");
-    
     paragraph.appendChild(text);
-
+    
     // add link
     var a = document.createElement('a');
     var link = document.createTextNode("Go to Login");
     a.appendChild(link); 
     a.title = "This is Link"; 
-    a.href = "/login"; 
+    a.href = "/signin"; 
     document.body.appendChild(a);
 
     // remove 

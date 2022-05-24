@@ -91,14 +91,14 @@ const closeBtn = document.querySelector(".close-btn");
 window.addEventListener("load", () => {
   setTimeout(() => {
     popupScreen.classList.add("active");
-  }, 600000);
+  }, 0); 
 });
 
 closeBtn.addEventListener("click", () => {
   popupScreen.classList.remove("active");
-  document.cookie = "WebsiteName=testWebsite; max-age=" + 1 * 1 * 1;
+  document.cookie = "test=test; max-age=" + 1 * 1 * 20;
 });
-const WebsiteCookie = document.cookie.indexOf("WebsiteName=");
+const WebsiteCookie = document.cookie.indexOf("test=");
 
 if (WebsiteCookie != -1) {
   popupScreen.style.display = "none";
@@ -124,11 +124,11 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " activee";
-  setTimeout(showSlides, 1800); // Change image every 5 seconds 
+  setTimeout(showSlides, 1800);
 }
 
 // timer 
-var countDownDate = new Date("May 25, 2022 4:30:00").getTime();
+var countDownDate = new Date("May 25, 2022 16:30:00").getTime();
 
 var x = setInterval(function() {
 

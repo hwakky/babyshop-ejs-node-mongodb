@@ -1,15 +1,17 @@
-<%- include('partials/header/Login.ejs') %>
+<%- include('partials/header/signin.ejs') %>
 <div class="text">
   <h1>Welcome</h1>
   <p>Sign in to ssaw or <a href="/signup">create an account</a></p>
 </div>
-<form class="form-box" action="/login" method="POST">
+<form class="form-box" action="/signin" method="POST">
 
   <div class="input-box space">
+      <i class='bx bx-envelope'></i>
       <input type="text" id="fname" name="username" placeholder="Email">
   </div>
   
   <div class="input-box">
+      <i class='bx bxs-key' ></i>
       <input type="password" id="password" name="password" placeholder="Password">
       <span class="eye" onclick="myFunction()">
           <i id="hide1" class ="fa fa-eye"></i>

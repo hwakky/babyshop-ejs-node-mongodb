@@ -2,29 +2,41 @@
 
 <div class="block overflowY">
   <form action='/user/history' method="post"> 
-  <div class="underline">
-    <h1>TRANSACTION</h1>
+  <div class="underline" >
+    <div style="margin-top:0.5rem">
+      <h1>TRANSACTION</h1>
+    </div>
   </div>
   <div>
-    <h3>Delivery Information</h3>
-    <div class="column information">
-      <div class="row">
-        <div>
-          <label class=" ">Fullname</label>
-          <input type="text" class=" " name="fullname" placeholder="Firstname&#x09;Lastname" value='<%= user.fullname%>' required>
+    <div style="margin-top:0.5rem">
+      <h2>Delivery Information</h2>
+    </div>
+    <div class="column information" style="margin-top:1rem">
+      <div class="row spacebetween">
+        <div class="row">
+          <label>Fullname : </label>
+          <div class="underline">
+            <input class="inputX" type="text" name="fullname" placeholder="Firstname&#x09;Lastname" value='<%= user.fullname%>' required>
+          </div>
         </div>
-        <div>
-          <label class=" ">Phone number</label>
-          <input type="text" class=" " name="phone" placeholder="Phone number" value='<%= user.phone%>' required>
+        <div class="row">
+          <label>Phone number :</label>
+          <div class="underline">
+            <input class="inputX" type="text" name="phone" placeholder="Phone number" value='<%= user.phone%>' required>
+          </div>
         </div>
-        <div>
-          <label class=" ">Email</label>
-          <input type="text" class=" " name="email" placeholder="Email" value='<%= user.email%>' required>
+        <div class="row">
+          <label>Email :</label>
+          <div class="underline">
+            <input class="inputX" type="text" name="email" placeholder="Email" value='<%= user.email%>' required>
+          </div>
         </div>
       </div>
-      <div>
-        <label class=" ">Address</label>
-        <input type="text" class=" " name="address" placeholder="Address" value='<%= user.addressLine+user.city+user.state+user.zipcode+user.country%>' required>
+      <div class="row">
+        <label>Address :</label>
+        <div class="underline">
+        <input class="inputX" type="text" name="address" placeholder="Address" value='<%= user.addressLine+user.city+user.state+user.zipcode+user.country%>' required>
+        </div>
       </div>
     </div>
   </div>
@@ -50,11 +62,11 @@
         <% total = subtotal + fee %>
       <div class="boxx">
         <div style="display: flex; flex-direction: row;">
-          <h5>Subtotal<input type='hidden' name='subtotal' value='<%= subtotal %>'></h5>
+          <p>Subtotal :<input type='hidden' name='subtotal' value='<%= subtotal %>'></p>
           <p><%= subtotal %>฿</p>
         </div>
         <div style="display: flex; flex-direction: row;">
-          <h5>Shipping fee<input type='hidden' name='fee' value="<%= fee %>"></h5>
+          <p>Shipping fee :<input type='hidden' name='fee' value="<%= fee %>"></p>
           <p><%= fee %>฿</p>
         </div>
         <div style="display: flex; flex-direction: row;">

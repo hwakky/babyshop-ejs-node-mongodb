@@ -1,7 +1,7 @@
 var express = require('express');
 const middlewareObj = require('../middleware');
 const cart = require('../model/cart');
-const Item = require('../model/itemall');
+const Item = require('../model/product');
     router = express.Router();
     User = require('../model/user');
     passport = require('passport');

@@ -1,4 +1,4 @@
-const Item = require('../model/itemall');
+const Item = require('../model/product');
 
 const middlewareObj = [];
 
@@ -47,7 +47,7 @@ middlewareObj.isLoggedIn = (req, res, next) => {
         return next();
     }
     req.flash('error','You need to login first.');
-    res.redirect('/login');
+    res.redirect('/signin');
 }
 
 middlewareObj.isAdmin = (req, res, next) => {
@@ -58,7 +58,7 @@ middlewareObj.isAdmin = (req, res, next) => {
             res.redirect('back');
         }
     } else {
-        res.redirect('/login');
+        res.redirect('/signin');
     }
 }
 

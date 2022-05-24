@@ -23,25 +23,8 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
 
-// background
-// song
-var mySong = document.getElementById("mySong");
-var play = document.getElementById("icon-music");
-
-play.onclick = function () {
-  if (mySong.paused) {
-    mySong.play();
-    play.classList.remove("bx-volume-mute");
-    play.classList.add("bx-music");
-  } else {
-    mySong.pause();
-    play.classList.remove("bx-music");
-    play.classList.add("bx-volume-mute");
-  }
-};
-
 // snow
-setInterval(createSnowFlake, 1000);
+setInterval(createSnowFlake, 300);
 
 function createSnowFlake() {
   const snow_flake = document.createElement("i");
@@ -53,7 +36,7 @@ function createSnowFlake() {
 
   setTimeout(() => {
     snow_flake.remove();
-  }, 10000);
+  }, 9500);
 }
 // cursor
 const cursor = document.querySelector(".cursor");

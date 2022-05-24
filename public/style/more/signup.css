@@ -11,34 +11,34 @@ body {
   display: flex;
   flex-direction: column;
 }
-.logo-block{
+.logo-block {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.logo{
+.logo {
   width: 4rem;
   padding: 0 1rem;
 }
-#logo{
+#logo {
   font-size: 1.5rem;
 }
 
-::selection{
+::selection {
   color: red;
   background: pink;
 }
 h1 {
   font-size: 5rem;
 }
-a{
+a {
   color: rgba(155, 155, 155, 0.8);
   text-decoration: none;
   font-size: 1.5rem;
   text-align: center;
 }
-#finish{
-  color:black;
+#finish {
+  color: black;
   font-size: 2rem;
   text-align: center;
   margin-top: 2rem;
@@ -96,11 +96,8 @@ input.invalid {
   background-color: #04aa6d;
 }
 
-
-
-
 /* scroll page 4 */
-.container{
+.container {
   position: relative;
   width: 30rem;
   height: 20rem;
@@ -108,23 +105,25 @@ input.invalid {
   justify-content: center;
   flex-direction: column;
   margin: auto;
-  left:2rem;
-  top:1.5rem;
+  left: 2rem;
+  top: 1.5rem;
+  border-radius: 1rem;
 }
 
-.container > #box{
-height: 300px;
-width: 400px;
-overflow: auto;
-position: relative;
-overscroll-behavior-block: contain;
+.container > #box {
+  height: 300px;
+  width: 400px;
+  overflow: auto;
+  position: relative;
+  overscroll-behavior-block: contain;
+  border: 0.1rem white solid;
 }
 .header {
   position: absolute;
   width: 25rem;
   background-color: #f1f1f1;
 }
-.fix{
+.fix {
   position: fixed;
 }
 .header h2 {
@@ -139,7 +138,7 @@ overscroll-behavior-block: contain;
 
 .progress-bar {
   height: 8px;
-  background: #04AA6D;
+  background: #04aa6d;
   width: 0%;
 }
 
@@ -148,7 +147,6 @@ overscroll-behavior-block: contain;
   margin: 50px auto 0 auto;
   width: 80%;
 }
-
 
 /* footer part */
 
@@ -169,35 +167,33 @@ overscroll-behavior-block: contain;
 }
 
 /* cursor */
-.cursor{
+.cursor {
   z-index: 999;
   position: fixed;
-  background: #2696E8;
+  background: #2696e8;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 20px #2696E8,
-              0 0 60px #2696E8,
-              0 0 100px #2696E8;
+  box-shadow: 0 0 20px #2696e8, 0 0 60px #2696e8, 0 0 100px #2696e8;
   animation: colors 5s infinite;
   transform: translate(-50%, -50%);
   display: none;
 }
 
-@keyframes colors{
-  0%{
+@keyframes colors {
+  0% {
     filter: hue-rotate(0deg);
   }
-  100%{
+  100% {
     filter: hue-rotate(360deg);
   }
 }
 
-.cursor:before{
-  content: '';
+.cursor:before {
+  content: "";
   position: absolute;
-  background: #2696E8;
+  background: #2696e8;
   width: 50px;
   height: 50px;
   opacity: 0.2;
@@ -205,19 +201,58 @@ overscroll-behavior-block: contain;
   border-radius: 50%;
 }
 
-
 /* alert */
-.alert{
+.alert {
   width: 100%;
   z-index: 2;
   font-size: 2rem;
   position: fixed;
 }
-.alert-danger{
+.alert-danger {
   background-color: rgb(255, 137, 137);
   color: rgb(255, 0, 0);
 }
-.alert-success{
+.alert-success {
   background-color: rgb(213, 255, 179);
   color: rgb(0, 255, 21);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+::placeholder {
+  color: #fff;
+}
+
+input {
+  width: 90%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.input-box {
+  margin: 0 auto;
+  width: 75%;
+  border-bottom: 1px solid #fff;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.formbox {
+  z-index: -2;
+  width: 40rem;
+  height: 25rem;
+  background-color: rgba(155, 155, 155, 0.8);
+  box-shadow: 0 0 2rem 0.2rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
 }

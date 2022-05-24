@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-    Item = require('./model/itemall');
+    Item = require('./model/product');
     Comment = require('./model/comment');
     User = require('./model/user');
 
@@ -63,11 +63,25 @@ const dataItem = [
         {   
             name: 'Red Heart',
             image:'/picture/whiteheart.png',
-            desc:'xxxxx',
+            desc:'alot of heart',
             price:'1500',
             stock:'5',
             category:'clothe',
             sold:'20',
+            author : {
+                id : '627ca21ceba5b65d5dd41cd1',
+                username : 'baby-shop.co',
+                image:'/picture/main/logo.png'
+            }
+        },
+        {   
+            name: 'Circle wood',
+            image:'/picture/circlewood.png',
+            desc:'wood toy it can develop children\'s abilities',
+            price:'99',
+            stock:'99',
+            category:'toy',
+            sold:'50',
             author : {
                 id : '627ca21ceba5b65d5dd41cd1',
                 username : 'baby-shop.co',

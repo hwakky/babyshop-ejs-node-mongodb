@@ -1,62 +1,128 @@
 <%- include('partials/header/Signup.ejs') %>
-      <form id="regForm"action="/signup" method="POST">
+    <form id="regForm" action="/signup" method="POST">
         <div class="text">
             <h1 id="regis">Register</h1>
         </div>
-        
-        <div class="tab">Name:
-            <p><input name="fullname" type="text" placeholder="Full name" oninput="this.className = ''"></p>
-            <p><input name="email" type="email" placeholder="Email" oninput="this.className = ''" ></p>
-            <p><input name="username" type="text" placeholder="Username" oninput="this.className = ''"></p>
-            <p><input name="password" type="password" placeholder="Password" oninput="this.className = ''"></p>
-            <p>What is your fav color?</p>
-            <p><input name="fav" type="text" placeholder="when forgot password" oninput="this.className = ''"></p>
-        </div>
 
-
-        <div class="tab">Contact Info:
-            <p><input name="addressLine" placeholder="Address lines" oninput="this.className = ''"></p>
-            <p><input name="city" placeholder="City" oninput="this.className = ''"></p>
-            <p><input name="state" placeholder="State" oninput="this.className = ''"></p>
-            <p><input name="zipcode" placeholder="Zip code" oninput="this.className = ''"></p>
-            <p><input name="country" placeholder="Country" oninput="this.className = ''"></p>
-        </div>
-
-    <div class="tab">
-        <div class="container">
-            <div id="box" class="box">
-              <section class="header fix">
-                <h3>By continuing, you agree to Amazon's Conditions 
-                    of Use and Privacy Notice.</h3>
-                <div class="progress-container">
-                  <div class="progress-bar" id="myBar"></div>
+        <div class="formbox">
+            <div class="tab">
+                <div class="row input-box">
+                    <i class='bx bx-smile' style="font-size:2rem"></i>
+                    <p><input name="fullname" type="text" style="width: 26.5rem;" placeholder="Full name"
+                            oninput="this.className = ''"></p>
                 </div>
-              </section>
-                <br><br>
-                <h3>Scroll Down to See The Effect</h3>
-                <p>We have created a "progress bar" to <b>show how far a page has been scrolled</b>.</p>
-                <p>It also <b>works when you scroll back up</b>.</p>
-                <p>It is even <b>responsive</b>! Resize the browser window to see the effect.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+                <div class="row input-box">
+                    <i class='bx bx-envelope' style="font-size:2rem"></i>
+                    <p><input name="email" type="email" placeholder="Email" oninput="this.className = ''"
+                        style="width: 26.5rem;"></p>
+                </div>
+                <div class="row input-box">
+                    <i class='bx bxs-user' style="font-size:2rem"></i>
+                    <p><input name="username" type="text" placeholder="Username" oninput="this.className = ''"
+                        style="width: 26.5rem;"></p>
+                </div>
+                <div class="row input-box">
+                    <i class='bx bxs-key' style="font-size:2rem"></i>
+                    <p><input name="password" type="password" placeholder="Password" oninput="this.className = ''"
+                        style="width: 26.5rem;"></p>
+                </div>
+                <div style="margin-top: 2rem;" class="input-box">
+                    <p>What is your fav color?</p>
+                    <p><input name="fav" type="text" placeholder="when forgot password" oninput="this.className = ''"
+                        style="width: 26.5rem; margin-left: 2rem;"></p>
+                </div>
             </div>
-          </div>
-      </div>
 
+            <div class="tab">
+                <h3 style="margin-top: 1rem; margin-left:1rem; position: relative;">Contact Info:</h3>
+                <div class="row input-box">
 
-        <div style="overflow:auto;">
+                    <p><input name="addressLine" placeholder="Address lines" oninput="this.className = ''" style="width: 26.5rem;"></p>
+                </div>
+                <div class="row input-box">
+
+                    <p><input name="city" placeholder="City" oninput="this.className = ''"style="width: 26.5rem;"></p>
+                </div>
+                <div class="row input-box">
+
+                    <p><input name="state" placeholder="State" oninput="this.className = ''"style="width: 26.5rem;"></p>
+                </div>
+                <div class="row input-box">
+
+                    <p><input name="zipcode" placeholder="Zip code" oninput="this.className = ''"style="width: 26.5rem;"></p>
+                </div>
+                <div class="row input-box">
+
+                    <p><input name="country" placeholder="Country" oninput="this.className = ''"style="width: 26.5rem;"></p>
+                </div>
+            </div>
+
+            <div class="tab">
+                <div class="container">
+                    <div id="box" class="box">
+                        <section class="header fix">
+                            <h3>By continuing, you agree to Amazon's Conditions
+                                of Use and Privacy Notice.</h3>
+                            <div class="progress-container">
+                                <div class="progress-bar" id="myBar"></div>
+                            </div>
+                        </section>
+                        <br><br>
+                        <h3>Scroll Down to See The Effect</h3>
+                        <p>We have created a "progress bar" to <b>show how far a page has been scrolled</b>.</p>
+                        <p>It also <b>works when you scroll back up</b>.</p>
+                        <p>It is even <b>responsive</b>! Resize the browser window to see the effect.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo,
+                            maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id
+                            agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his
+                            ad. Eum no molestiae voluptatibus.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="overflow:auto; margin-top: 1rem;">
             <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                <button type="submit" value="Submit">Sign in</button>
+                <button type="submit" value="Submit" style="border: none; background-color:transparent">:)</button>
             </div>
         </div>
         <div style="text-align:center;margin-top:40px;">
@@ -64,8 +130,8 @@
             <span class="step"></span>
             <span class="step"></span>
         </div>
-        
+
     </form>
     <p id="finish">
     </p>
-<%- include('partials/footer/Main2.ejs') %>
+    <%- include('partials/footer/Main2.ejs') %>

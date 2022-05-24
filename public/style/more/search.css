@@ -143,3 +143,6 @@
 ::-webkit-scrollbar {
   display: none;
 }
+.flex-end{
+  justify-content: space-around;
+}
